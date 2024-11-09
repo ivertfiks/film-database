@@ -1,0 +1,500 @@
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,canvas,details,embed,figure,figcaption,footer,header,hgroup,menu,nav,output,ruby,section,summary,time,mark,audio,video {
+margin:0;
+padding:0;
+border:0;
+font-size:100%;
+font:inherit;
+vertical-align:baseline;
+font-family:verdana
+}
+
+article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section {
+display:block
+}
+
+body {
+line-height:1;
+background-color:#121212
+}
+
+ol,ul {
+list-style:none
+}
+
+blockquote,q {
+quotes:none
+}
+
+blockquote:before,blockquote:after,q:before,q:after {
+content:'';
+content:none
+}
+
+table {
+border-collapse:collapse;
+border-spacing:0
+}
+
+header {
+background:#0003;
+padding:17px 0;
+border-bottom:1px solid #80808080;
+position:absolute;
+width:100%;
+color:#fff
+}
+
+.wrapper {
+display:flex;
+align-items:center;
+max-width:1200px;
+margin:0 auto;
+padding:0 20px;
+box-sizing:border-box;
+width:1200px
+}
+
+.logo {
+font-size:24px;
+font-weight:700;
+position:relative;
+top:-3px
+}
+
+nav {
+margin:0 20px
+}
+
+nav ul {
+display:flex;
+list-style:none;
+padding:0;
+margin:0
+}
+
+nav li {
+margin:0 15px
+}
+
+.search {
+margin:0 20px
+}
+
+.search input {
+padding:5px;
+border:1px solid #ccc;
+border-radius:4px
+}
+
+.user-details {
+margin-left:auto
+}
+
+#header-section {
+height:700px;
+display:flex;
+align-items:flex-center;
+padding:20px;
+box-sizing:border-box;
+background-image:url(https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwallpapercave.com%2Fwp%2Fwp12389779.jpg&f=1&nofb=1&ipt=61d49382847dfba1f52f9aa81854bc644406613a7bc747c6c446a545454b6b4d&ipo=images);
+background-size:cover
+}
+
+.header-text {
+color:#fff
+}
+
+.header-text h1 {
+font-weight:700;
+font-size:50px;
+font-family:verdana
+}
+
+.header-text p {
+font-size:15px;
+font-family:verdana;
+margin:30px 0;
+padding:10px;
+line-height:18px
+}
+
+.button-white {
+padding:15px 20px;
+border:none;
+border-radius:10px;
+background-color:#fff;
+color:#000;
+cursor:pointer
+}
+
+.button-gray {
+padding:15px 20px;
+border:none;
+border-radius:10px;
+background-color:#282828;
+color:#fff;
+cursor:pointer
+}
+
+#content-section {
+position:relative;
+width:100%
+}
+
+.special-for-user {
+top:-90px;
+margin-bottom:-90px
+}
+
+#content-section h3 {
+font-size:19px;
+font-weight:700;
+margin:10px 0 20px;
+color:#fff
+}
+
+#content-section img {
+width:100%;
+height:100%;
+object-fit:cover;
+border-radius:12px
+}
+
+#content-section .content {
+position:absolute;
+bottom:20px;
+left:15px
+}
+
+#content-section .content .film-data {
+font-size:11px;
+color:#9c9c9c;
+margin:8px 0
+}
+
+#content-section ul {
+display:flex;
+flex-direction:row
+}
+
+#content-section ul li {
+position:relative;
+margin:0 11px;
+color:#fff
+}
+
+#content-section .refresh li {
+margin:10px 0
+}
+
+#content-section ul li:first-child {
+margin-left:0
+}
+
+#content-section ul li:last-child {
+margin-right:0
+}
+
+.overlay {
+position:absolute;
+left:0;
+right:0;
+bottom:0;
+height:100%;
+pointer-events:none;
+overflow:hidden;
+border-radius:12px
+}
+
+.overlay::before {
+content:'';
+position:absolute;
+left:0;
+right:0;
+bottom:0;
+height:100%;
+background:linear-gradient(to bottom,#0000,#000c);
+border-radius:12px;
+filter:blur(12px)
+}
+
+#content-section ul li .behind-content {
+position:absolute;
+left:0;
+right:0;
+bottom:0;
+height:100%;
+border-radius:12px;
+z-index:1;
+overflow:hidden;
+opacity:100;
+transform:1s;
+transition:1s
+}
+
+#content-section ul li .behind-content:hover {
+opacity:100;
+transform:1s;
+transition:1s;
+background:#00000080
+}
+
+#content-section ul li {
+overflow:hidden
+}
+
+.carousel-container {
+position:relative;
+display:flex;
+align-items:center;
+overflow:hidden
+}
+
+#carousel {
+display:flex;
+transition:transform 1s ease
+}
+
+#carousel li {
+flex:0 0 calc(16.66% - 17.3px);
+margin:0 15px
+}
+
+.carousel-btn {
+position:absolute;
+top:50%;
+transform:translateY(-50%);
+font-size:24px;
+background:#00000080;
+color:#fff;
+border:none;
+cursor:pointer;
+padding:10px;
+z-index:10
+}
+
+.left-btn {
+left:10px
+}
+
+.right-btn {
+right:10px
+}
+
+.carousel-btn.disabled {
+opacity:.3;
+cursor:not-allowed
+}
+
+.most-popular {
+margin:50px 0
+}
+
+.most-popular ul {
+flex-wrap:wrap;
+justify-content:space-between
+}
+
+.most-popular ul li {
+flex:0 0 calc(16.66% - 17.3px);
+margin:0
+}
+
+.trending {
+margin:50px 0
+}
+
+#film-anounce {
+border-top:2px solid;
+border-bottom:2px solid;
+border-image:linear-gradient(to right,#192f59,#b81870) 1;
+padding:20px
+}
+
+.anounce {
+position:relative;
+background-image:url(https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fimages.wallpapersden.com%2Fimage%2Fdownload%2Fhappiest-anime-girl-hd-ai-art_bmVsZmyUmZqaraWkpJRmbmpnrWZmZ2U.jpg&f=1&nofb=1&ipt=f7a326b195db83938bec6ca609248b125ad71bed09d4adbb7e0075d5281fb619&ipo=images);
+background-size:cover;
+background-attachment:fixed;
+overflow:hidden;
+height:500px;
+display:flex
+}
+
+.anounce::before {
+content:"";
+position:absolute;
+top:0;
+left:0;
+right:0;
+bottom:0;
+backdrop-filter:blur(10px);
+background-color:#00000080;
+z-index:1
+}
+
+.anounce .wrapper {
+position:relative;
+z-index:2
+}
+
+#film-anounce img {
+height:400px;
+flex:50%;
+width:60%;
+object-fit:cover
+}
+
+#film-anounce .content {
+margin:0 50px;
+color:#fff
+}
+
+#film-anounce .content h1 {
+font-weight:700;
+font-size:45px;
+font-family:verdana
+}
+
+#film-anounce .content p {
+font-size:12px;
+font-family:verdana;
+margin:10px 0
+}
+
+#film-anounce .content h4 {
+font-weight:bolder;
+font-size:23px;
+margin:10px 0;
+font-family:verdana
+}
+
+footer {
+position:relative;
+background-image:url(https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fimages.wallpapersden.com%2Fimage%2Fdownload%2Fhappiest-anime-girl-hd-ai-art_bmVsZmyUmZqaraWkpJRmbmpnrWZmZ2U.jpg&f=1&nofb=1&ipt=f7a326b195db83938bec6ca609248b125ad71bed09d4adbb7e0075d5281fb619&ipo=images);
+background-size:cover;
+overflow:hidden;
+height:50px;
+display:flex;
+color:#fff;
+font-weight:100;
+font-size:12px
+}
+
+footer .footer-text {
+width:100%;
+text-align:center
+}
+
+footer::before {
+content:"";
+position:absolute;
+top:0;
+left:0;
+right:0;
+bottom:0;
+backdrop-filter:blur(3px);
+background-color:#000000e6;
+z-index:1
+}
+
+footer .wrapper {
+position:relative;
+z-index:2
+}
+
+.clearfix::after {
+content:"";
+display:table;
+clear:both
+}
+
+.header {
+position:relative
+}
+
+.main-content .wrapper {
+display:block;
+overflow:auto
+}
+
+.main-content {
+overflow:auto
+}
+
+.sidebar {
+color:#fff;
+float:left;
+width:220px;
+padding:15px
+}
+
+.sidebar h3 {
+font-size:30px;
+font-weight:700;
+margin:0 0 40px
+}
+
+.sidebar-content {
+font-weight:100;
+font-size:15px;
+color:#bcbbc4;
+padding:10px 0
+}
+
+.film-content #content-section {
+margin:0
+}
+
+.film-content #content-section ul li {
+flex:0 0 calc(20% - 10px)
+}
+
+.film-content #content-section ul {
+justify-content:flex-start;
+gap:12px
+}
+
+.film-content #content-section ul li {
+margin:0
+}
+
+.section {
+margin-bottom:20px
+}
+
+h3,h4 {
+margin-bottom:10px
+}
+
+label {
+margin-left:5px
+}
+
+input[type="date"] {
+width:100%;
+margin-bottom:10px
+}
+
+.main-content {
+margin:50px 0;
+display:flex;
+align-items:flex-start
+}
+
+.film-content {
+overflow:hidden
+}
+
+.sort-by {
+margin-left:auto;
+color:#fff;
+padding:15px;
+align-self:flex-start;
+overflow:hidden;
+text-align:right
+}
+
+.kendo_dropdown {
+width:auto
+}

@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="header">
+    <div class="wrapper">
+        <div class="logo">
+            Logo
+        </div>
+        <nav>
+            <ul>
+                <li>Home</li>
+                <li>Catalog</li>
+                <li>News</li>
+                <li>Collections</li>
+            </ul>
+        </nav>
+        <div class="search">
+            <input type="text" placeholder="Search...">
+        </div>
+        <div class="user-details">
+            <button class="button-white">Log In</button>
+            <button class="button-gray">Get Started</button>
+        </div>
+    </div>
+</header>
+
+<section class="main-content ">
+  <div class="wrapper clearfix">
+    <div class="sidebar">
+      <div class="section">
+          <h3>Catalog</h3>
+          <div class="sidebar-content">
+          <p>Show me:</p>
+          <div>
+              <input type="radio" id="everything" name="visibility" value="everything" checked>
+              <label for="everything">Everything</label>
+          </div>
+          <div>
+              <input type="radio" id="unseen" name="visibility" value="unseen">
+              <label for="unseen">Movies I Haven't Seen</label>
+          </div>
+          <div>
+              <input type="radio" id="seen" name="visibility" value="seen">
+              <label for="seen">Movies I Have Seen</label>
+          </div>
+
+          <h4>Availabilities</h4>
+          <label for="availabilities">Search all availabilities?</label>
+          <input type="checkbox" id="availabilities" name="availabilities">
+
+          <h4>Release Dates</h4>
+          <label for="release_from">From:</label>
+          <input type="date" id="release_from" name="release_from">
+          <label for="release_to">To:</label>
+          <input type="date" id="release_to" name="release_to">
+
+          <h4>Genres</h4>
+          <div>
+              <input type="checkbox" id="action" name="genre" value="Action">
+              <label for="action">Action</label>
+          </div>
+          <div>
+              <input type="checkbox" id="adventure" name="genre" value="Adventure">
+              <label for="adventure">Adventure</label>
+          </div>
+          <div>
+              <input type="checkbox" id="animation" name="genre" value="Animation">
+              <label for="animation">Animation</label>
+          </div>
+          <div>
+              <input type="checkbox" id="comedy" name="genre" value="Comedy">
+              <label for="comedy">Comedy</label>
+          </div>
+          <div>
+              <input type="checkbox" id="crime" name="genre" value="Crime">
+              <label for="crime">Crime</label>
+          </div>
+          <div>
+              <input type="checkbox" id="documentary" name="genre" value="Documentary">
+              <label for="documentary">Documentary</label>
+          </div>
+          <div>
+              <input type="checkbox" id="drama" name="genre" value="Drama">
+              <label for="drama">Drama</label>
+          </div>
+          <div>
+              <input type="checkbox" id="family" name="genre" value="Family">
+              <label for="family">Family</label>
+          </div>
+          <div>
+              <input type="checkbox" id="fantasy" name="genre" value="Fantasy">
+              <label for="fantasy">Fantasy</label>
+          </div>
+          <div>
+              <input type="checkbox" id="history" name="genre" value="History">
+              <label for="history">History</label>
+          </div>
+          <div>
+              <input type="checkbox" id="horror" name="genre" value="Horror">
+              <label for="horror">Horror</label>
+          </div>
+          <div>
+              <input type="checkbox" id="music" name="genre" value="Music">
+              <label for="music">Music</label>
+          </div>
+          <div>
+              <input type="checkbox" id="mystery" name="genre" value="Mystery">
+              <label for="mystery">Mystery</label>
+          </div>
+          <div>
+              <input type="checkbox" id="romance" name="genre" value="Romance">
+              <label for="romance">Romance</label>
+          </div>
+          <div>
+              <input type="checkbox" id="science_fiction" name="genre" value="Science Fiction">
+              <label for="science_fiction">Science Fiction</label>
+          </div>
+          <div>
+              <input type="checkbox" id="tv_movie" name="genre" value="TV Movie">
+              <label for="tv_movie">TV Movie</label>
+          </div>
+          <div>
+              <input type="checkbox" id="thriller" name="genre" value="Thriller">
+              <label for="thriller">Thriller</label>
+          </div>
+          <div>
+              <input type="checkbox" id="war" name="genre" value="War">
+              <label for="war">War</label>
+          </div>
+          <div>
+              <input type="checkbox" id="western" name="genre" value="Western">
+              <label for="western">Western</label>
+          </div>
+      </div>
+    </div>
+  </div>
+    <div class="section sort-by">
+        <h3>Sort By</h3>
+    </div>
+    <div class="films film-content">
+      <section id="content-section" class="most-popular">
+
+    <ul class="refresh">
+      <li>
+        <div class="image-container">
+          <img src="https://www.anilibria.tv/storage/releases/posters/9724/Wa8GgoNO4jGfBfpZik6SvZJI7yDvjain.jpg" alt="">
+          <div class="overlay"></div> <!-- Псевдоэлемент затемнения -->
+        </div>
+        
+        <div class="behind-content">
+          <div class="content">
+          <span class="film-title">
+            Tower of God
+          </span>
+          <p class="film-data">
+            2024, Sport
+          </p>
+        </div>
+        </div>
+      </li>
+      <li>
+        <div class="image-container">
+          <img src="https://www.anilibria.tv/storage/releases/posters/9724/Wa8GgoNO4jGfBfpZik6SvZJI7yDvjain.jpg" alt="">
+          <div class="overlay"></div> <!-- Псевдоэлемент затемнения -->
+        </div>
+        
+        <div class="behind-content">
+          <div class="content">
+          <span class="film-title">
+            Tower of God
+          </span>
+          <p class="film-data">
+            2024, Sport
+          </p>
+        </div>
+        </div>
+      </li>
+      <li>
+        <div class="image-container">
+          <img src="https://www.anilibria.tv/storage/releases/posters/9724/Wa8GgoNO4jGfBfpZik6SvZJI7yDvjain.jpg" alt="">
+          <div class="overlay"></div> <!-- Псевдоэлемент затемнения -->
+        </div>
+        
+        <div class="behind-content">
+          <div class="content">
+          <span class="film-title">
+            Tower of God
+          </span>
+          <p class="film-data">
+            2024, Sport
+          </p>
+        </div>
+        </div>
+      </li>
+      <li>
+        <div class="image-container">
+          <img src="https://www.anilibria.tv/storage/releases/posters/9724/Wa8GgoNO4jGfBfpZik6SvZJI7yDvjain.jpg" alt="">
+          <div class="overlay"></div> <!-- Псевдоэлемент затемнения -->
+        </div>
+        
+        <div class="behind-content">
+          <div class="content">
+          <span class="film-title">
+            Tower of God
+          </span>
+          <p class="film-data">
+            2024, Sport
+          </p>
+        </div>
+        </div>
+      </li>
+      <li>
+        <div class="image-container">
+          <img src="https://www.anilibria.tv/storage/releases/posters/9724/Wa8GgoNO4jGfBfpZik6SvZJI7yDvjain.jpg" alt="">
+          <div class="overlay"></div> <!-- Псевдоэлемент затемнения -->
+        </div>
+        
+        <div class="behind-content">
+          <div class="content">
+          <span class="film-title">
+            Tower of God
+          </span>
+          <p class="film-data">
+            2024, Sport
+          </p>
+        </div>
+        </div>
+      </li>
+      <li>
+        <div class="image-container">
+          <img src="https://www.anilibria.tv/storage/releases/posters/9724/Wa8GgoNO4jGfBfpZik6SvZJI7yDvjain.jpg" alt="">
+          <div class="overlay"></div> <!-- Псевдоэлемент затемнения -->
+        </div>
+        
+        <div class="behind-content">
+          <div class="content">
+          <span class="film-title">
+            Tower of God
+          </span>
+          <p class="film-data">
+            2024, Sport
+          </p>
+        </div>
+        </div>
+      </li>
+      <li>
+        <div class="image-container">
+          <img src="https://www.anilibria.tv/storage/releases/posters/9724/Wa8GgoNO4jGfBfpZik6SvZJI7yDvjain.jpg" alt="">
+          <div class="overlay"></div> <!-- Псевдоэлемент затемнения -->
+        </div>
+        
+        <div class="behind-content">
+          <div class="content">
+          <span class="film-title">
+            Tower of God
+          </span>
+          <p class="film-data">
+            2024, Sport
+          </p>
+        </div>
+        </div>
+      </li>
+      <li>
+        <div class="image-container">
+          <img src="https://www.anilibria.tv/storage/releases/posters/9724/Wa8GgoNO4jGfBfpZik6SvZJI7yDvjain.jpg" alt="">
+          <div class="overlay"></div> <!-- Псевдоэлемент затемнения -->
+        </div>
+        
+        <div class="behind-content">
+          <div class="content">
+          <span class="film-title">
+            Tower of God
+          </span>
+          <p class="film-data">
+            2024, Sport
+          </p>
+        </div>
+        </div>
+      </li>
+      <li>
+        <div class="image-container">
+          <img src="https://www.anilibria.tv/storage/releases/posters/9724/Wa8GgoNO4jGfBfpZik6SvZJI7yDvjain.jpg" alt="">
+          <div class="overlay"></div> <!-- Псевдоэлемент затемнения -->
+        </div>
+        
+        <div class="behind-content">
+          <div class="content">
+          <span class="film-title">
+            Tower of God
+          </span>
+          <p class="film-data">
+            2024, Sport
+          </p>
+        </div>
+        </div>
+      </li>
+      <li>
+        <div class="image-container">
+          <img src="https://www.anilibria.tv/storage/releases/posters/9724/Wa8GgoNO4jGfBfpZik6SvZJI7yDvjain.jpg" alt="">
+          <div class="overlay"></div> <!-- Псевдоэлемент затемнения -->
+        </div>
+        
+        <div class="behind-content">
+          <div class="content">
+          <span class="film-title">
+            Tower of God
+          </span>
+          <p class="film-data">
+            2024, Sport
+          </p>
+        </div>
+        </div>
+      </li>
+      <li>
+        <div class="image-container">
+          <img src="https://www.anilibria.tv/storage/releases/posters/9724/Wa8GgoNO4jGfBfpZik6SvZJI7yDvjain.jpg" alt="">
+          <div class="overlay"></div> <!-- Псевдоэлемент затемнения -->
+        </div>
+        
+        <div class="behind-content">
+          <div class="content">
+          <span class="film-title">
+            Tower of God
+          </span>
+          <p class="film-data">
+            2024, Sport
+          </p>
+        </div>
+        </div>
+      </li>
+      <li>
+        <div class="image-container">
+          <img src="https://www.anilibria.tv/storage/releases/posters/9724/Wa8GgoNO4jGfBfpZik6SvZJI7yDvjain.jpg" alt="">
+          <div class="overlay"></div> <!-- Псевдоэлемент затемнения -->
+        </div>
+        
+        <div class="behind-content">
+          <div class="content">
+          <span class="film-title">
+            Tower of God
+          </span>
+          <p class="film-data">
+            2024, Sport
+          </p>
+        </div>
+        </div>
+      </li>
+    </ul>
+</section>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrapper">
+    <div class="footer-text">
+      <h1>
+        © 2024 Logo. Все права защищены.
+      </h1>
+    </div>
+  </div>
+</footer>
+</body>
+</html>
