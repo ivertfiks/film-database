@@ -6,7 +6,7 @@ import lombok.NoArgsConstructor;
 
 @Data
 @NoArgsConstructor
-public class Movie {
+public class MovieDetails {
 
     @JsonProperty("id")
     private int id;

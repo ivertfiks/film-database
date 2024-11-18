@@ -1,4 +1,4 @@
-package com.film.entity;
+package com.film.client.endpoints;
 
 import lombok.experimental.UtilityClass;
 

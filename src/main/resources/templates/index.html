@@ -57,7 +57,7 @@
       <ul id="carousel">
         <li th:each="movie, iterStat : ${movies}">
           <div class="image-container">
-            <img src="https://www.anilibria.tv/storage/releases/posters/9724/Wa8GgoNO4jGfBfpZik6SvZJI7yDvjain.jpg" alt="">
+            <img th:src="'https://image.tmdb.org/t/p/w200' + ${movie.posterPath}" alt="">
             <div class="overlay"></div>
           </div>
           <div class="behind-content">

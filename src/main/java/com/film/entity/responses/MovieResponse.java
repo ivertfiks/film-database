@@ -1,6 +1,7 @@
-package com.film.entity;
+package com.film.entity.responses;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.film.entity.Movie;
 import java.util.List;
 import lombok.Data;
 

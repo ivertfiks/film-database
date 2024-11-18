@@ -31,5 +31,6 @@ public class MovieController {
 //        model.addAttribute("movie", movie);
 //        return "movie_detail";
 //    }
+
 }
 
