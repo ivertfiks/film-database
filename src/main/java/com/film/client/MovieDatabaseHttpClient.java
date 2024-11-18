@@ -25,6 +25,7 @@ public class MovieDatabaseHttpClient {
     @Value("${moviedb.base-url}")
     private String baseUrl;
 
+
     public List<Movie> getTopTrending() {
         try {
             return restClient.get()
@@ -35,8 +36,8 @@ public class MovieDatabaseHttpClient {
                 .header("Authorization", "Bearer " + accessToken)
                 .header("accept", "application/json")
                 .retrieve()
-                .bodyToMono(MovieResponse.class)
-                .map(MovieResponse::getMovies)
+                .bodyToFlux(Movie.class)
+                .collectList()
                 .block();
         } catch (WebClientResponseException ex) {
             // Log the error or handle it as needed
@@ -44,6 +45,8 @@ public class MovieDatabaseHttpClient {
             throw new RuntimeException("Failed to fetch movie data", ex);
         }
     }
+
+
 
     public String getTopTrendingString() {
         try {

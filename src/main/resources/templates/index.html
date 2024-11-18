@@ -48,175 +48,29 @@
     </div>
   </div>
 </section>
-<section id="content-section" class="special-for-user">
-  <div class="wrapper">
-    <h3>Trending Now</h3>
-  </div>
-  <div class="wrapper carousel-container">
-    <button class="carousel-btn left-btn" id="prevBtn">&lt;</button>
-    <ul id="carousel">
-      <!-- Список аниме слайдов -->
-      <li> <!-- Элемент с изображением и информацией об аниме -->
-        <div class="image-container">
-          <img src="https://www.anilibria.tv/storage/releases/posters/9724/Wa8GgoNO4jGfBfpZik6SvZJI7yDvjain.jpg" alt="Tower of God">
-          <div class="overlay"></div>
-        </div>
-        <div class="behind-content">
-          <div class="content">
-            <span class="film-title">Tower of God1</span>
-            <p class="film-data">2024, Sport</p>
+  <section id="content-section" class="special-for-user">
+    <div class="wrapper">
+      <h3>Trending Now</h3>
+    </div>
+    <div class="wrapper carousel-container">
+      <button class="carousel-btn left-btn" id="prevBtn">&lt;</button>
+      <ul id="carousel">
+        <li th:each="movie, iterStat : ${movies}">
+          <div class="image-container">
+            <img src="https://www.anilibria.tv/storage/releases/posters/9724/Wa8GgoNO4jGfBfpZik6SvZJI7yDvjain.jpg" alt="">
+            <div class="overlay"></div>
           </div>
-        </div>
-      </li>
-      <li> <!-- Элемент с изображением и информацией об аниме -->
-        <div class="image-container">
-          <img src="https://www.anilibria.tv/storage/releases/posters/9724/Wa8GgoNO4jGfBfpZik6SvZJI7yDvjain.jpg" alt="Tower of God">
-          <div class="overlay"></div>
-        </div>
-        <div class="behind-content">
-          <div class="content">
-            <span class="film-title">Tower of God2</span>
-            <p class="film-data">2024, Sport</p>
+          <div class="behind-content">
+            <div class="content">
+              <span class="film-title" th:text="${movie.title}">Tower of God</span>
+
+            </div>
           </div>
-        </div>
-      </li>
-      <li> <!-- Элемент с изображением и информацией об аниме -->
-        <div class="image-container">
-          <img src="https://www.anilibria.tv/storage/releases/posters/9724/Wa8GgoNO4jGfBfpZik6SvZJI7yDvjain.jpg" alt="Tower of God">
-          <div class="overlay"></div>
-        </div>
-        <div class="behind-content">
-          <div class="content">
-            <span class="film-title">Tower of God3</span>
-            <p class="film-data">2024, Sport</p>
-          </div>
-        </div>
-      </li>
-      <li> <!-- Элемент с изображением и информацией об аниме -->
-        <div class="image-container">
-          <img src="https://www.anilibria.tv/storage/releases/posters/9724/Wa8GgoNO4jGfBfpZik6SvZJI7yDvjain.jpg" alt="Tower of God">
-          <div class="overlay"></div>
-        </div>
-        <div class="behind-content">
-          <div class="content">
-            <span class="film-title">Tower of God4</span>
-            <p class="film-data">2024, Sport</p>
-          </div>
-        </div>
-      </li>
-      <li> <!-- Элемент с изображением и информацией об аниме -->
-        <div class="image-container">
-          <img src="https://www.anilibria.tv/storage/releases/posters/9724/Wa8GgoNO4jGfBfpZik6SvZJI7yDvjain.jpg" alt="Tower of God">
-          <div class="overlay"></div>
-        </div>
-        <div class="behind-content">
-          <div class="content">
-            <span class="film-title">Tower of God5</span>
-            <p class="film-data">2024, Sport</p>
-          </div>
-        </div>
-      </li>
-      <li> <!-- Элемент с изображением и информацией об аниме -->
-        <div class="image-container">
-          <img src="https://www.anilibria.tv/storage/releases/posters/9724/Wa8GgoNO4jGfBfpZik6SvZJI7yDvjain.jpg" alt="Tower of God">
-          <div class="overlay"></div>
-        </div>
-        <div class="behind-content">
-          <div class="content">
-            <span class="film-title">Tower of God6</span>
-            <p class="film-data">2024, Sport</p>
-          </div>
-        </div>
-      </li>
-      <li> <!-- Элемент с изображением и информацией об аниме -->
-        <div class="image-container">
-          <img src="https://www.anilibria.tv/storage/releases/posters/9724/Wa8GgoNO4jGfBfpZik6SvZJI7yDvjain.jpg" alt="Tower of God">
-          <div class="overlay"></div>
-        </div>
-        <div class="behind-content">
-          <div class="content">
-            <span class="film-title">Tower of God7</span>
-            <p class="film-data">2024, Sport</p>
-          </div>
-        </div>
-      </li>
-      <li> <!-- Элемент с изображением и информацией об аниме -->
-        <div class="image-container">
-          <img src="https://www.anilibria.tv/storage/releases/posters/9724/Wa8GgoNO4jGfBfpZik6SvZJI7yDvjain.jpg" alt="Tower of God">
-          <div class="overlay"></div>
-        </div>
-        <div class="behind-content">
-          <div class="content">
-            <span class="film-title">Tower of God</span>
-            <p class="film-data">2024, Sport</p>
-          </div>
-        </div>
-      </li>
-      <li> <!-- Элемент с изображением и информацией об аниме -->
-        <div class="image-container">
-          <img src="https://www.anilibria.tv/storage/releases/posters/9724/Wa8GgoNO4jGfBfpZik6SvZJI7yDvjain.jpg" alt="Tower of God">
-          <div class="overlay"></div>
-        </div>
-        <div class="behind-content">
-          <div class="content">
-            <span class="film-title">Tower of God</span>
-            <p class="film-data">2024, Sport</p>
-          </div>
-        </div>
-      </li>
-      <li> <!-- Элемент с изображением и информацией об аниме -->
-        <div class="image-container">
-          <img src="https://www.anilibria.tv/storage/releases/posters/9724/Wa8GgoNO4jGfBfpZik6SvZJI7yDvjain.jpg" alt="Tower of God">
-          <div class="overlay"></div>
-        </div>
-        <div class="behind-content">
-          <div class="content">
-            <span class="film-title">Tower of God</span>
-            <p class="film-data">2024, Sport</p>
-          </div>
-        </div>
-      </li>
-      <li> <!-- Элемент с изображением и информацией об аниме -->
-        <div class="image-container">
-          <img src="https://www.anilibria.tv/storage/releases/posters/9724/Wa8GgoNO4jGfBfpZik6SvZJI7yDvjain.jpg" alt="Tower of God">
-          <div class="overlay"></div>
-        </div>
-        <div class="behind-content">
-          <div class="content">
-            <span class="film-title">Tower of God</span>
-            <p class="film-data">2024, Sport</p>
-          </div>
-        </div>
-      </li>
-      <li> <!-- Элемент с изображением и информацией об аниме -->
-        <div class="image-container">
-          <img src="https://www.anilibria.tv/storage/releases/posters/9724/Wa8GgoNO4jGfBfpZik6SvZJI7yDvjain.jpg" alt="Tower of God">
-          <div class="overlay"></div>
-        </div>
-        <div class="behind-content">
-          <div class="content">
-            <span class="film-title">Tower of God</span>
-            <p class="film-data">2024, Sport</p>
-          </div>
-        </div>
-      </li>
-      <li> <!-- Элемент с изображением и информацией об аниме -->
-        <div class="image-container">
-          <img src="https://www.anilibria.tv/storage/releases/posters/9724/Wa8GgoNO4jGfBfpZik6SvZJI7yDvjain.jpg" alt="Tower of God">
-          <div class="overlay"></div>
-        </div>
-        <div class="behind-content">
-          <div class="content">
-            <span class="film-title">Tower of God</span>
-            <p class="film-data">2024, Sport</p>
-          </div>
-        </div>
-      </li>
-      <!-- Добавить остальные элементы li здесь -->
-    </ul>
-    <button class="carousel-btn right-btn" id="nextBtn">&gt;</button>
-  </div>
-</section>
+        </li>
+      </ul>
+      <button class="carousel-btn right-btn" id="nextBtn">&gt;</button>
+    </div>
+  </section>
 
 
 <section id="content-section" class="trending">
@@ -232,7 +86,7 @@
           <img src="https://www.anilibria.tv/storage/releases/posters/9724/Wa8GgoNO4jGfBfpZik6SvZJI7yDvjain.jpg" alt="">
           <div class="overlay"></div> <!-- Псевдоэлемент затемнения -->
         </div>
-        
+
         <div class="behind-content">
           <div class="content">
           <span class="film-title">
@@ -249,7 +103,7 @@
           <img src="https://www.anilibria.tv/storage/releases/posters/9724/Wa8GgoNO4jGfBfpZik6SvZJI7yDvjain.jpg" alt="">
           <div class="overlay"></div> <!-- Псевдоэлемент затемнения -->
         </div>
-        
+
         <div class="behind-content">
           <div class="content">
           <span class="film-title">
@@ -266,7 +120,7 @@
           <img src="https://www.anilibria.tv/storage/releases/posters/9724/Wa8GgoNO4jGfBfpZik6SvZJI7yDvjain.jpg" alt="">
           <div class="overlay"></div> <!-- Псевдоэлемент затемнения -->
         </div>
-        
+
         <div class="behind-content">
           <div class="content">
           <span class="film-title">
@@ -283,7 +137,7 @@
           <img src="https://www.anilibria.tv/storage/releases/posters/9724/Wa8GgoNO4jGfBfpZik6SvZJI7yDvjain.jpg" alt="">
           <div class="overlay"></div> <!-- Псевдоэлемент затемнения -->
         </div>
-        
+
         <div class="behind-content">
           <div class="content">
           <span class="film-title">
@@ -300,7 +154,7 @@
           <img src="https://www.anilibria.tv/storage/releases/posters/9724/Wa8GgoNO4jGfBfpZik6SvZJI7yDvjain.jpg" alt="">
           <div class="overlay"></div> <!-- Псевдоэлемент затемнения -->
         </div>
-        
+
         <div class="behind-content">
           <div class="content">
           <span class="film-title">
@@ -317,7 +171,7 @@
           <img src="https://www.anilibria.tv/storage/releases/posters/9724/Wa8GgoNO4jGfBfpZik6SvZJI7yDvjain.jpg" alt="">
           <div class="overlay"></div> <!-- Псевдоэлемент затемнения -->
         </div>
-        
+
         <div class="behind-content">
           <div class="content">
           <span class="film-title">
@@ -369,7 +223,7 @@
           <img src="https://www.anilibria.tv/storage/releases/posters/9724/Wa8GgoNO4jGfBfpZik6SvZJI7yDvjain.jpg" alt="">
           <div class="overlay"></div> <!-- Псевдоэлемент затемнения -->
         </div>
-        
+
         <div class="behind-content">
           <div class="content">
           <span class="film-title">
@@ -386,7 +240,7 @@
           <img src="https://www.anilibria.tv/storage/releases/posters/9724/Wa8GgoNO4jGfBfpZik6SvZJI7yDvjain.jpg" alt="">
           <div class="overlay"></div> <!-- Псевдоэлемент затемнения -->
         </div>
-        
+
         <div class="behind-content">
           <div class="content">
           <span class="film-title">
@@ -403,7 +257,7 @@
           <img src="https://www.anilibria.tv/storage/releases/posters/9724/Wa8GgoNO4jGfBfpZik6SvZJI7yDvjain.jpg" alt="">
           <div class="overlay"></div> <!-- Псевдоэлемент затемнения -->
         </div>
-        
+
         <div class="behind-content">
           <div class="content">
           <span class="film-title">
@@ -420,7 +274,7 @@
           <img src="https://www.anilibria.tv/storage/releases/posters/9724/Wa8GgoNO4jGfBfpZik6SvZJI7yDvjain.jpg" alt="">
           <div class="overlay"></div> <!-- Псевдоэлемент затемнения -->
         </div>
-        
+
         <div class="behind-content">
           <div class="content">
           <span class="film-title">
@@ -437,7 +291,7 @@
           <img src="https://www.anilibria.tv/storage/releases/posters/9724/Wa8GgoNO4jGfBfpZik6SvZJI7yDvjain.jpg" alt="">
           <div class="overlay"></div> <!-- Псевдоэлемент затемнения -->
         </div>
-        
+
         <div class="behind-content">
           <div class="content">
           <span class="film-title">
@@ -454,7 +308,7 @@
           <img src="https://www.anilibria.tv/storage/releases/posters/9724/Wa8GgoNO4jGfBfpZik6SvZJI7yDvjain.jpg" alt="">
           <div class="overlay"></div> <!-- Псевдоэлемент затемнения -->
         </div>
-        
+
         <div class="behind-content">
           <div class="content">
           <span class="film-title">
@@ -471,7 +325,7 @@
           <img src="https://www.anilibria.tv/storage/releases/posters/9724/Wa8GgoNO4jGfBfpZik6SvZJI7yDvjain.jpg" alt="">
           <div class="overlay"></div> <!-- Псевдоэлемент затемнения -->
         </div>
-        
+
         <div class="behind-content">
           <div class="content">
           <span class="film-title">
@@ -488,7 +342,7 @@
           <img src="https://www.anilibria.tv/storage/releases/posters/9724/Wa8GgoNO4jGfBfpZik6SvZJI7yDvjain.jpg" alt="">
           <div class="overlay"></div> <!-- Псевдоэлемент затемнения -->
         </div>
-        
+
         <div class="behind-content">
           <div class="content">
           <span class="film-title">
@@ -505,7 +359,7 @@
           <img src="https://www.anilibria.tv/storage/releases/posters/9724/Wa8GgoNO4jGfBfpZik6SvZJI7yDvjain.jpg" alt="">
           <div class="overlay"></div> <!-- Псевдоэлемент затемнения -->
         </div>
-        
+
         <div class="behind-content">
           <div class="content">
           <span class="film-title">
@@ -522,7 +376,7 @@
           <img src="https://www.anilibria.tv/storage/releases/posters/9724/Wa8GgoNO4jGfBfpZik6SvZJI7yDvjain.jpg" alt="">
           <div class="overlay"></div> <!-- Псевдоэлемент затемнения -->
         </div>
-        
+
         <div class="behind-content">
           <div class="content">
           <span class="film-title">
@@ -539,7 +393,7 @@
           <img src="https://www.anilibria.tv/storage/releases/posters/9724/Wa8GgoNO4jGfBfpZik6SvZJI7yDvjain.jpg" alt="">
           <div class="overlay"></div> <!-- Псевдоэлемент затемнения -->
         </div>
-        
+
         <div class="behind-content">
           <div class="content">
           <span class="film-title">
@@ -556,7 +410,7 @@
           <img src="https://www.anilibria.tv/storage/releases/posters/9724/Wa8GgoNO4jGfBfpZik6SvZJI7yDvjain.jpg" alt="">
           <div class="overlay"></div> <!-- Псевдоэлемент затемнения -->
         </div>
-        
+
         <div class="behind-content">
           <div class="content">
           <span class="film-title">
