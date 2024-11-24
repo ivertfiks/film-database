@@ -216,20 +216,14 @@
     position: relative;
     width: 100%;
     overflow: hidden;
+    border-radius: 8px;
 }
 
 .card-image img {
-    position: absolute;
-    top: 0;
-    left: 0;
     width: 100%;
     height: 100%;
     object-fit: cover;
     transition: transform 0.3s ease;
-}
-
-.anime-card:hover .card-image img {
-    transform: scale(1.05);
 }
 
 .card-overlay {
@@ -238,86 +232,79 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.3) 50%, rgba(0,0,0,0.1) 100%);
-    opacity: 0;
+    background: rgba(0, 0, 0, 0.5);
     display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-    padding: 0.8rem; /* Уменьшаем отступы */
-    transition: all 0.3s ease;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
 }
 
 .anime-card:hover .card-overlay {
     opacity: 1;
 }
 
-.card-stats {
+.anime-card:hover .card-image img {
+    transform: scale(1.05);
+}
+
+.play-btn {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 60px;
+    height: 60px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
     display: flex;
-    justify-content: space-between;
-    margin-bottom: 0.8rem; /* Уменьшаем отступ */
+    justify-content: center;
+    align-items: center;
     color: white;
-    font-size: 0.85rem; /* Уменьшаем размер шрифта */
+    font-size: 24px;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(5px);
+}
+
+.play-btn:hover {
+    background: rgba(255, 255, 255, 0.3);
+    transform: translate(-50%, -50%) scale(1.1);
+}
+
+.card-info {
+    padding: 15px;
+}
+
+.card-tags {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.card-tags span {
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 12px;
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.card-info h3 {
+    margin: 0;
+    font-size: 16px;
+    margin-bottom: 8px;
+    color: white;
 }
 
 .rating {
     display: flex;
     align-items: center;
-    gap: 0.3rem;
+    gap: 5px;
+    color: #ffd700;
+    margin: 0;
 }
 
 .rating i {
-    color: #FFD700;
-}
-
-.watch-btn {
-    width: 100%;
-    padding: 0.6rem; /* Уменьшаем высоту кнопки */
-    background: var(--primary-color);
-    border: none;
-    border-radius: 5px;
-    color: white;
-    font-weight: 500;
-    font-size: 0.9rem; /* Уменьшаем размер шрифта */
-    cursor: pointer;
-    transition: all 0.3s ease;
-    opacity: 0;
-    transform: translateY(20px);
-}
-
-.anime-card:hover .watch-btn {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-.watch-btn:hover {
-    background: var(--secondary-color);
-}
-
-.card-info {
-    padding: 0.8rem; /* Уменьшаем отступы */
-}
-
-.card-info h3 {
-    color: var(--text-primary);
-    font-size: 1rem; /* Уменьшаем размер заголовка */
-    margin-bottom: 0.4rem; /* Уменьшаем отступ */
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-}
-
-.card-tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.4rem; /* Уменьшаем отступы между тегами */
-}
-
-.card-tags span {
-    padding: 0.2rem 0.6rem; /* Уменьшаем отступы в тегах */
-    background: rgba(255, 255, 255, 0.1);
-    border-radius: 12px;
-    color: var(--text-secondary);
-    font-size: 0.75rem; /* Уменьшаем размер шрифта */
+    font-size: 14px;
 }
 
 /* Список */

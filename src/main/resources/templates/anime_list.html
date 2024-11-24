@@ -17,11 +17,11 @@
             <span>AniStream</span>
         </div>
         <div class="nav-links" data-aos="fade-left">
-            <a href="index.html">Home</a>
-            <a href="anime_list.html" class="active">Anime</a>
-            <a href="anime_list.html">Movies</a>
-            <a href="anime_list.html">Popular</a>
-            <a href="anime_list.html">My List</a>
+            <a th:href="@{'/'}">Home</a>
+            <a th:href="@{'/movie-list'}" class="active">Anime</a>
+            <a th:href="@{'/movie-list'}">Movies</a>
+            <a th:href="@{'/movie-list'}">Popular</a>
+            <a th:href="@{'/movie-list'}">My List</a>
         </div>
         <div class="nav-buttons">
             <button class="search-btn"><i class="fas fa-search"></i></button>
@@ -35,7 +35,7 @@
             <div class="filter-section">
                 <h3>Поиск</h3>
                 <div class="search-box">
-                    <input type="text" placeholder="Поиск аниме...">
+                    <input type="text" placeholder="Поиск аниме..." th:value="${searchQuery}">
                     <i class="fas fa-search"></i>
                 </div>
             </div>
@@ -43,25 +43,9 @@
             <div class="filter-section">
                 <h3>Жанры</h3>
                 <div class="genre-tags">
-                    <label class="tag-checkbox">
-                        <input type="checkbox" value="action">
-                        <span>Экшен</span>
-                    </label>
-                    <label class="tag-checkbox">
-                        <input type="checkbox" value="adventure">
-                        <span>Приключения</span>
-                    </label>
-                    <label class="tag-checkbox">
-                        <input type="checkbox" value="comedy">
-                        <span>Комедия</span>
-                    </label>
-                    <label class="tag-checkbox">
-                        <input type="checkbox" value="drama">
-                        <span>Драма</span>
-                    </label>
-                    <label class="tag-checkbox">
-                        <input type="checkbox" value="fantasy">
-                        <span>Фэнтези</span>
+                    <label class="tag-checkbox" th:each="genre : ${genres}">
+                        <input type="checkbox" th:value="${genre.id}" th:checked="${#lists.contains(selectedGenres, genre.id)}">
+                        <span th:text="${genre.name}">Жанр</span>
                     </label>
                 </div>
             </div>
@@ -69,23 +53,23 @@
             <div class="filter-section">
                 <h3>Год выпуска</h3>
                 <div class="year-range">
-                    <input type="number" placeholder="От" min="1960" max="2024">
+                    <input type="number" placeholder="От" min="1960" max="2024" th:value="${yearFrom}">
                     <span>-</span>
-                    <input type="number" placeholder="До" min="1960" max="2024">
+                    <input type="number" placeholder="До" min="1960" max="2024" th:value="${yearTo}">
                 </div>
             </div>
 
             <div class="filter-section">
                 <h3>Рейтинг</h3>
                 <div class="rating-slider">
-                    <input type="range" min="0" max="10" step="0.1" value="0">
-                    <span class="rating-value">0+</span>
+                    <input type="range" min="0" max="10" step="0.1" th:value="${minRating}">
+                    <span class="rating-value" th:text="${minRating + '+'}">0+</span>
                 </div>
             </div>
 
             <div class="filter-section">
                 <h3>Статус</h3>
-                <select class="status-select">
+                <select class="status-select" th:value="${status}">
                     <option value="all">Все</option>
                     <option value="ongoing">Онгоинг</option>
                     <option value="completed">Завершён</option>
@@ -100,7 +84,7 @@
         <!-- Основной контент -->
         <section class="anime-grid-container">
             <div class="sort-controls">
-                <select class="sort-select">
+                <select class="sort-select" th:value="${sortBy}">
                     <option value="popularity">По популярности</option>
                     <option value="rating">По рейтингу</option>
                     <option value="name">По названию</option>
@@ -113,19 +97,48 @@
             </div>
 
             <div class="anime-grid" data-aos="fade-up">
-                <!-- Карточки аниме будут добавляться динамически через JavaScript -->
+                <!-- Карточки фильмов -->
+                <div th:each="movie : ${movies}" class="anime-card">
+                    <div class="card-image">
+                        <img th:src="${'https://image.tmdb.org/t/p/w500' + movie.posterPath}" 
+                             th:alt="${movie.title}">
+                        <div class="card-overlay">
+                            <a th:href="@{'/movie_details/' + ${movie.id}}" class="play-btn" style="left: 50%; transform: translateX(-50%);">
+                                <i class="fas fa-play"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="card-info">
+                        <div class="card-tags">
+                            <span th:if="${movie.voteAverage >= 8}">Топ</span>
+                            <span th:text="${#strings.substring(movie.releaseDate, 0, 4)}">2023</span>
+                        </div>
+                        <h3 th:text="${movie.title}">Название фильма</h3>
+                        <p class="rating">
+                            <i class="fas fa-star"></i>
+                            <span th:text="${#numbers.formatDecimal(movie.voteAverage, 1, 1)}">8.5</span>
+                        </p>
+                    </div>
+                </div>
             </div>
 
-            <div class="pagination">
-                <button class="prev-page"><i class="fas fa-chevron-left"></i></button>
+            <!-- Пагинация -->
+            <div class="pagination" th:if="${totalPages > 1}">
+                <button class="prev-page" th:disabled="${currentPage == 1}">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
                 <div class="page-numbers">
-                    <span class="active">1</span>
-                    <span>2</span>
-                    <span>3</span>
-                    <span>...</span>
-                    <span>10</span>
+                    <span th:each="pageNum : ${#numbers.sequence(1, totalPages)}"
+                          th:if="${pageNum == 1 || pageNum == totalPages || (pageNum >= currentPage - 1 && pageNum <= currentPage + 1)}"
+                          th:text="${pageNum}"
+                          th:class="${pageNum == currentPage ? 'active' : ''}">
+                    </span>
+                    <span th:if="${currentPage > 3}">...</span>
+                    <span th:if="${currentPage < totalPages - 2}">...</span>
                 </div>
-                <button class="next-page"><i class="fas fa-chevron-right"></i></button>
+                <button class="next-page" th:disabled="${currentPage == totalPages}">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
             </div>
         </section>
     </main>
@@ -162,7 +175,6 @@
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/notyf@3/notyf.min.js"></script>
-    <script src="js/anime_list.js"></script>
     <script>
         AOS.init({
             duration: 800,
