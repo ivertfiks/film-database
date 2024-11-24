@@ -339,29 +339,41 @@
 /* Стили для секции актеров озвучки */
 .cast-section {
     margin-bottom: 40px;
+    position: relative;
+    padding: 20px 0;
 }
 
 .cast-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    gap: 25px;
-    margin-top: 30px;
+    display: flex;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* IE and Edge */
+    gap: 12px;
+    padding: 15px 20px;
+}
+
+.cast-grid::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Opera */
 }
 
 .cast-card {
-    background: rgba(255,255,255,0.03);
-    border-radius: 10px;
+    flex: 0 0 auto;
+    width: 120px; /* Уменьшенная ширина */
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
     overflow: hidden;
-    transition: transform 0.3s ease;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .cast-card:hover {
     transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
 }
 
 .cast-image {
-    width: 100%;
-    aspect-ratio: 1;
+    width: 120px; /* Соответствует ширине карточки */
+    height: 160px; /* Уменьшенная высота */
     overflow: hidden;
 }
 
@@ -372,18 +384,55 @@
 }
 
 .cast-info {
-    padding: 15px;
+    padding: 8px;
+    text-align: center;
 }
 
 .cast-info h3 {
-    color: var(--text-primary);
-    margin-bottom: 5px;
-    font-size: 1.1rem;
+    margin: 0;
+    font-size: 13px;
+    font-weight: 600;
+    color: #fff;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .cast-info p {
+    margin: 4px 0;
+    font-size: 11px;
+    color: #aaa;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.cast-info .department {
+    font-size: 10px;
     color: var(--text-secondary);
-    font-size: 0.9rem;
+    opacity: 0.7;
+}
+
+/* Добавляем градиент по краям для индикации прокрутки */
+.cast-section::before,
+.cast-section::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    width: 50px;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.cast-section::before {
+    left: 0;
+    background: linear-gradient(to right, var(--background-color) 0%, transparent 100%);
+}
+
+.cast-section::after {
+    right: 0;
+    background: linear-gradient(to left, var(--background-color) 0%, transparent 100%);
 }
 
 /* Стили для боковой панели */

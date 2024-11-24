@@ -3,8 +3,11 @@ package com.film.client;
 import com.film.entity.Movie;
 import com.film.client.endpoints.MovieDbEndpoints;
 import com.film.entity.MovieDetails;
+import com.film.entity.Person;
 import com.film.entity.responses.MovieResponse;
 import java.util.List;
+
+import com.film.entity.responses.PersonResponse;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
@@ -48,6 +51,33 @@ public class MovieDatabaseHttpClient {
             throw new RuntimeException("Failed to fetch movie data", ex);
         }
     }
+
+    public List<Person> getMovieCredits(String id) {
+        log.info("Sending request to fetch movie credits for id: {}", id);
+        log.info("Constructed URL IMPORTANT: {}", restClient.get().uri(uriBuilder -> uriBuilder
+                .path(MovieDbEndpoints.GET_MOVIE_CREDITS_BY_ID)
+                .build(id)));
+
+        try {
+            return restClient.get()
+                    .uri(uriBuilder -> uriBuilder
+                            .path(MovieDbEndpoints.GET_MOVIE_CREDITS_BY_ID)
+                            .queryParam("language", "en-US")
+                            .build(id))
+                    .header("Authorization", "Bearer " + accessToken)
+                    .header("accept", "application/json")
+                    .retrieve()
+                    .bodyToMono(PersonResponse.class)
+                    .map(PersonResponse::getPersons)
+                    .block();
+        } catch (WebClientResponseException ex) {
+            log.error("Failed to fetch movie credits for id: {}. Status code: {}", id, ex.getStatusCode());
+            log.error("Error message: {}", ex.getResponseBodyAsString());
+            throw new RuntimeException("Failed to fetch movie data", ex);
+        }
+    }
+
+
 
     public MovieDetails getMovieDetails(String id) {
         log.info("Sending request to fetch movie details for id: {}", id);

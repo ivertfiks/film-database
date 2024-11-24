@@ -3,6 +3,7 @@ package com.film.controller;
 import com.film.client.MovieDatabaseHttpClient;
 import com.film.entity.Movie;
 import com.film.entity.MovieDetails;
+import com.film.entity.Person;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
@@ -27,12 +28,21 @@ public class MovieController {
     }
 
     @GetMapping("/movie_details/{id}")
-    public String getMovieDetails(Model model, @PathVariable("id") String id) {
-        log.info("Fetching movie details for ID: {}", id);
+    public String getMovieDetailsWithCredits(Model model, @PathVariable("id") String id) {
+        log.info("Fetching movie details and credits for ID: {}", id);
+
+        // Получаем детали фильма
         MovieDetails movie = movieClient.getMovieDetails(id);
         model.addAttribute("movie", movie);
+
+        // Получаем актёров (credits)
+        List<Person> persons = movieClient.getMovieCredits(id);
+        model.addAttribute("persons", persons);
+
+        // Возвращаем общий шаблон
         return "anime_details";
     }
+
 
 
 
