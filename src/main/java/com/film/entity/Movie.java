@@ -1,12 +1,16 @@
 package com.film.entity;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+
 @Data
 @NoArgsConstructor
 public class Movie {
+
 
     @JsonProperty("id")
     private int id;
@@ -49,5 +53,4 @@ public class Movie {
 
     @JsonProperty("media_type")
     private String mediaType;
-
 }

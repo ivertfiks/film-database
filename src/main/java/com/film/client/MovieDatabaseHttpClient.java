@@ -25,21 +25,25 @@ public class MovieDatabaseHttpClient {
     private String baseUrl;
 
     public List<Movie> getTopTrending() {
+        log.info("Sending request to fetch trending movies");
+        log.info("Authorization Token: Bearer {}", accessToken);
+        log.info("Base URL: {}", baseUrl);
+
         try {
             return restClient.get()
-                .uri(uriBuilder -> uriBuilder
-                    .path(MovieDbEndpoints.GET_TOP_TRENDING_MOVIES)
-                    .queryParam("language", "en-US")
-                    .build())
-                .header("Authorization", "Bearer " + accessToken)
-                .header("accept", "application/json")
-                .retrieve()
-                .bodyToMono(MovieResponse.class)
-                .map(MovieResponse::getMovies)
-                .block();
+                    .uri(uriBuilder -> uriBuilder
+                            .path(MovieDbEndpoints.GET_TOP_TRENDING_MOVIES)
+                            .queryParam("language", "en-US")
+                            .build())
+                    .header("Authorization", "Bearer " + accessToken)
+                    .header("accept", "application/json")
+                    .retrieve()
+                    .bodyToMono(MovieResponse.class)
+                    .map(MovieResponse::getMovies)
+                    .block();
         } catch (WebClientResponseException ex) {
-            // Log the error or handle it as needed
-            log.info("exception");
+            log.error("Failed to fetch trending movies. Status code: {}", ex.getStatusCode());
+            log.error("Error message: {}", ex.getResponseBodyAsString());
             throw new RuntimeException("Failed to fetch movie data", ex);
         }
     }
