@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AniStream - Список аниме</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/anime_list.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/notyf@3/notyf.min.css">
+</head>
+<body>
+    <!-- Навигация -->
+    <nav class="navbar">
+        <div class="nav-logo" data-aos="fade-right">
+            <span>AniStream</span>
+        </div>
+        <div class="nav-links" data-aos="fade-left">
+            <a href="index.html">Home</a>
+            <a href="anime_list.html" class="active">Anime</a>
+            <a href="anime_list.html">Movies</a>
+            <a href="anime_list.html">Popular</a>
+            <a href="anime_list.html">My List</a>
+        </div>
+        <div class="nav-buttons">
+            <button class="search-btn"><i class="fas fa-search"></i></button>
+            <button class="login-btn">Login</button>
+        </div>
+    </nav>
+
+    <main class="anime-list-container">
+        <!-- Боковая панель с фильтрами -->
+        <aside class="filters-sidebar" data-aos="fade-right">
+            <div class="filter-section">
+                <h3>Поиск</h3>
+                <div class="search-box">
+                    <input type="text" placeholder="Поиск аниме...">
+                    <i class="fas fa-search"></i>
+                </div>
+            </div>
+
+            <div class="filter-section">
+                <h3>Жанры</h3>
+                <div class="genre-tags">
+                    <label class="tag-checkbox">
+                        <input type="checkbox" value="action">
+                        <span>Экшен</span>
+                    </label>
+                    <label class="tag-checkbox">
+                        <input type="checkbox" value="adventure">
+                        <span>Приключения</span>
+                    </label>
+                    <label class="tag-checkbox">
+                        <input type="checkbox" value="comedy">
+                        <span>Комедия</span>
+                    </label>
+                    <label class="tag-checkbox">
+                        <input type="checkbox" value="drama">
+                        <span>Драма</span>
+                    </label>
+                    <label class="tag-checkbox">
+                        <input type="checkbox" value="fantasy">
+                        <span>Фэнтези</span>
+                    </label>
+                </div>
+            </div>
+
+            <div class="filter-section">
+                <h3>Год выпуска</h3>
+                <div class="year-range">
+                    <input type="number" placeholder="От" min="1960" max="2024">
+                    <span>-</span>
+                    <input type="number" placeholder="До" min="1960" max="2024">
+                </div>
+            </div>
+
+            <div class="filter-section">
+                <h3>Рейтинг</h3>
+                <div class="rating-slider">
+                    <input type="range" min="0" max="10" step="0.1" value="0">
+                    <span class="rating-value">0+</span>
+                </div>
+            </div>
+
+            <div class="filter-section">
+                <h3>Статус</h3>
+                <select class="status-select">
+                    <option value="all">Все</option>
+                    <option value="ongoing">Онгоинг</option>
+                    <option value="completed">Завершён</option>
+                    <option value="announced">Анонсирован</option>
+                </select>
+            </div>
+
+            <button class="apply-filters">Применить фильтры</button>
+            <button class="reset-filters">Сбросить</button>
+        </aside>
+
+        <!-- Основной контент -->
+        <section class="anime-grid-container">
+            <div class="sort-controls">
+                <select class="sort-select">
+                    <option value="popularity">По популярности</option>
+                    <option value="rating">По рейтингу</option>
+                    <option value="name">По названию</option>
+                    <option value="date">По дате выхода</option>
+                </select>
+                <div class="view-toggle">
+                    <button class="grid-view active"><i class="fas fa-th"></i></button>
+                    <button class="list-view"><i class="fas fa-list"></i></button>
+                </div>
+            </div>
+
+            <div class="anime-grid" data-aos="fade-up">
+                <!-- Карточки аниме будут добавляться динамически через JavaScript -->
+            </div>
+
+            <div class="pagination">
+                <button class="prev-page"><i class="fas fa-chevron-left"></i></button>
+                <div class="page-numbers">
+                    <span class="active">1</span>
+                    <span>2</span>
+                    <span>3</span>
+                    <span>...</span>
+                    <span>10</span>
+                </div>
+                <button class="next-page"><i class="fas fa-chevron-right"></i></button>
+            </div>
+        </section>
+    </main>
+
+    <!-- Футер -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>О нас</h3>
+                <p>AniStream - ваш проводник в мире аниме</p>
+            </div>
+            <div class="footer-section">
+                <h3>Ссылки</h3>
+                <ul>
+                    <li><a href="#">О проекте</a></li>
+                    <li><a href="#">Правила</a></li>
+                    <li><a href="#">Контакты</a></li>
+                    <li><a href="#">Поддержка</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Социальные сети</h3>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-discord"></i></a>
+                    <a href="#"><i class="fab fa-telegram"></i></a>
+                    <a href="#"><i class="fab fa-vk"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 AniStream. Все права защищены.</p>
+        </div>
+    </footer>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/notyf@3/notyf.min.js"></script>
+    <script src="js/anime_list.js"></script>
+    <script>
+        AOS.init({
+            duration: 800,
+            offset: 100,
+            once: true
+        });
+    </script>
+</body>
+</html>

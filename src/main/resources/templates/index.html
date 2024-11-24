@@ -1,487 +1,267 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru" xmlns:th="http://www.thymeleaf.org">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AniStream - Your Anime Universe</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
-  <header>
-    <div class="wrapper">
-        <div class="logo">
-            Logo
+    <nav class="navbar">
+        <div class="nav-logo" data-aos="fade-right">
+            <span>AniStream</span>
         </div>
-        <nav>
-            <ul>
-                <li>Home</li>
-                <li>Catalog</li>
-                <li>News</li>
-                <li>Collections</li>
-            </ul>
-        </nav>
-        <div class="search">
-            <input type="text" placeholder="Search...">
+        <div class="nav-links" data-aos="fade-left">
+            <a href="index.html" class="active">Home</a>
+            <a href="anime_list.html">Anime</a>
+            <a href="anime_list.html">Movies</a>
+            <a href="anime_list.html">Popular</a>
+            <a href="anime_list.html">My List</a>
         </div>
-        <div class="user-details">
-            <button class="button-white">Log In</button>
-            <button class="button-gray">Get Started</button>
+        <div class="nav-buttons">
+            <button class="search-btn"><i class="fas fa-search"></i></button>
+            <button class="login-btn">Login</button>
         </div>
-    </div>
-</header>
-<section id="header-section">
-  <div class="wrapper">
-    <div class="header-text">
-      <h1>
-        Chainsaw Man
-      </h1>
-      <p>
-        Denji has a simple dream - to live a happy <br>
-        and peaceful life, spending time with a girl
-      </p>
-      <button class="button-white">
-        Learn More
-      </button>
-      <button class="button-gray">
-        To Watch
-      </button>
-    </div>
-  </div>
-</section>
-  <section id="content-section" class="special-for-user">
-    <div class="wrapper">
-      <h3>Trending Now</h3>
-    </div>
-    <div class="wrapper carousel-container">
-      <button class="carousel-btn left-btn" id="prevBtn">&lt;</button>
-      <ul id="carousel">
-        <li th:each="movie, iterStat : ${movies}">
-          <div class="image-container">
-            <img th:src="'https://image.tmdb.org/t/p/w200' + ${movie.posterPath}" alt="">
-            <div class="overlay"></div>
-          </div>
-          <div class="behind-content">
-            <div class="content">
-              <span class="film-title" th:text="${movie.title}">Tower of God</span>
+    </nav>
 
+    <header class="hero">
+        <video class="hero-video" autoplay loop muted playsinline>
+            <source src="https://rr3---sn-4g5e6nzz.googlevideo.com/videoplayback?expire=1732474856&ei=iCNDZ9r3D82hp-oPxLDbgAg&ip=102.101.215.220&id=o-ACqwOL-IzEWkhcaPgtUNvHXdEuM27iiuiZ-zH6DjPvC4&itag=401&source=youtube&requiressl=yes&xpc=EgVo2aDSNQ%3D%3D&bui=AQn3pFRIWvhShw_TD2kdBR6pxG8te1F7P3DnKpxnniFHICJBZoB4BZ8JB36ImaeYOvbrT56bZHeVwGFM&vprv=1&mime=video%2Fmp4&rqh=1&gir=yes&clen=292416918&dur=234.999&lmt=1682884807088419&keepalive=yes&fexp=24350590,24350655,24350675,24350705,24350737,51326932,51335594&c=ANDROID_VR&txp=5532434&sparams=expire%2Cei%2Cip%2Cid%2Citag%2Csource%2Crequiressl%2Cxpc%2Cbui%2Cvprv%2Cmime%2Crqh%2Cgir%2Cclen%2Cdur%2Clmt&sig=AJfQdSswRAIgKA1-I91RQ0S_WH4EW24ZNy8HRCWKYnFKUXaIztflbFYCIFIvUzMHFiRgndd_8NC6tl1Q0tlba6JlLXcuIowxs1Oy&rm=sn-hxqpuxa-jhor7z&rrc=79,80&req_id=bfbedfc116fba3ee&redirect_counter=2&cm2rm=sn-h5q6l7e&cms_redirect=yes&cmsv=e&met=1732459969,&mh=6K&mip=46.205.207.221&mm=34&mn=sn-4g5e6nzz&ms=ltu&mt=1732458535&mv=u&mvi=3&pl=22&rms=ltu,au&lsparams=met,mh,mip,mm,mn,ms,mv,mvi,pl,rms&lsig=AGluJ3MwRQIgLN0Fc1SBvXoNjyyUfZxABvTQ5nrivXtYsXrYjejYXRICIQCfcalp9wLaMqGHOZfTnt-JEto7Z7BWbyL_ek9_s4TcYg%3D%3D" type="video/mp4">
+        </video>
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <h1>AniStream</h1>
+            <p class="hero-subtitle">Погрузись в мир аниме</p>
+            <div class="hero-buttons">
+                <button class="watch-btn">
+                    <i class="fas fa-play"></i> Смотреть сейчас
+                </button>
+                <button class="explore-btn">
+                    <i class="fas fa-compass"></i> Исследовать
+                </button>
             </div>
-          </div>
-        </li>
-      </ul>
-      <button class="carousel-btn right-btn" id="nextBtn">&gt;</button>
-    </div>
-  </section>
+        </div>
+        <div class="hero-stats">
+            <div class="stat-item">
+                <span class="stat-number">1000+</span>
+                <span class="stat-label">Аниме</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number">50K+</span>
+                <span class="stat-label">Пользователей</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number">HD</span>
+                <span class="stat-label">Качество</span>
+            </div>
+        </div>
+        <div class="scroll-indicator">
+            <div class="mouse"></div>
+            <p>Прокрути вниз</p>
+        </div>
+    </header>
 
+    <main>
+        <section class="featured">
+            <h2 class="section-title">Популярное сейчас</h2>
+            <div class="featured-grid">
+                <!-- Основной блок с популярным фильмом -->
+                <div class="featured-main" th:if="${not #lists.isEmpty(movies)}" th:with="movie=${movies[0]}">
+                    <img th:src="${'https://image.tmdb.org/t/p/original' + movie.backdropPath}" 
+                         th:alt="${movie.title}">
+                    <div class="featured-content">
+                        <div class="featured-tags">
+                            <span>Топ-1</span>
+                            <span th:text="${#strings.substring(movie.releaseDate, 0, 4)}">2023</span>
+                        </div>
+                        <h3 th:text="${movie.title}">Название фильма</h3>
+                        <p th:text="${movie.overview}">Описание фильма</p>
+                        <a th:href="@{'/anime_details.html?id=' + ${movie.id}}" class="watch-now">Смотреть</a>
+                    </div>
+                </div>
+                <!-- Боковые фильмы -->
+                <div class="featured-side" th:if="${not #lists.isEmpty(movies)}">
+                    <div class="side-item" th:each="movie : ${movies}" th:if="${movieStat.index > 0 && movieStat.index < 3}">
+                        <img th:src="${'https://image.tmdb.org/t/p/w500' + movie.posterPath}" 
+                             th:alt="${movie.title}">
+                        <div class="side-content">
+                            <h4 th:text="${movie.title}">Название фильма</h4>
+                            <p th:text="${#strings.substring(movie.releaseDate, 0, 4)}">2023</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-<section id="content-section" class="trending">
-  <div class="wrapper">
-    <h3>
-      Trending now
-    </h3>
-  </div>
-  <div class="wrapper">
-    <ul>
-      <li>
-        <div class="image-container">
-          <img src="https://www.anilibria.tv/storage/releases/posters/9724/Wa8GgoNO4jGfBfpZik6SvZJI7yDvjain.jpg" alt="">
-          <div class="overlay"></div> <!-- Псевдоэлемент затемнения -->
-        </div>
+        <section class="categories">
+            <h2 class="section-title">Исследуй жанры</h2>
+            <div class="categories-grid">
+                <div class="category-card" style="background-image: url('https://cdn.myanimelist.net/images/anime/1974/121274.jpg')">
+                    <div class="category-overlay"></div>
+                    <h3>Экшен</h3>
+                    <span>200+ тайтлов</span>
+                </div>
+                <div class="category-card" style="background-image: url('https://cdn.myanimelist.net/images/anime/1441/122795.jpg')">
+                    <div class="category-overlay"></div>
+                    <h3>Романтика</h3>
+                    <span>150+ тайтлов</span>
+                </div>
+                <div class="category-card" style="background-image: url('https://cdn.myanimelist.net/images/anime/1085/121944.jpg')">
+                    <div class="category-overlay"></div>
+                    <h3>Фэнтези</h3>
+                    <span>180+ тайтлов</span>
+                </div>
+                <div class="category-card" style="background-image: url('https://cdn.myanimelist.net/images/anime/1259/110227.jpg')">
+                    <div class="category-overlay"></div>
+                    <h3>Комедия</h3>
+                    <span>120+ тайтлов</span>
+                </div>
+            </div>
+        </section>
 
-        <div class="behind-content">
-          <div class="content">
-          <span class="film-title">
-            Tower of God
-          </span>
-          <p class="film-data">
-            2024, Sport
-          </p>
-        </div>
-        </div>
-      </li>
-      <li>
-        <div class="image-container">
-          <img src="https://www.anilibria.tv/storage/releases/posters/9724/Wa8GgoNO4jGfBfpZik6SvZJI7yDvjain.jpg" alt="">
-          <div class="overlay"></div> <!-- Псевдоэлемент затемнения -->
-        </div>
+        <section class="trending" data-aos="fade-up">
+            <h2 class="section-title">Сейчас смотрят</h2>
+            <div class="anime-grid">
+                <!-- Карточки фильмов -->
+                <div class="anime-card" th:each="movie, iterStat : ${movies}" 
+                     th:if="${iterStat.index > 2 && iterStat.index < 13}">
+                    <div class="card-image">
+                        <img th:src="${'https://image.tmdb.org/t/p/w500' + movie.posterPath}" 
+                             th:alt="${movie.title}">
+                        <div class="card-overlay">
+                            <button class="play-btn" 
+                                    th:onclick="'window.location.href=\'' + @{'/anime_details.html?id=' + ${movie.id}} + '\''">
+                                <i class="fas fa-play"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="card-info">
+                        <div class="card-tags">
+                            <span th:if="${movie.voteAverage >= 8}">Топ</span>
+                            <span th:text="${#strings.substring(movie.releaseDate, 0, 4)}">2023</span>
+                        </div>
+                        <h3 th:text="${movie.title}">Название фильма</h3>
+                        <p>
+                            <i class="fas fa-star"></i>
+                            <span th:text="${#numbers.formatDecimal(movie.voteAverage, 1, 1)}">8.5</span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-        <div class="behind-content">
-          <div class="content">
-          <span class="film-title">
-            Tower of God
-          </span>
-          <p class="film-data">
-            2024, Sport
-          </p>
-        </div>
-        </div>
-      </li>
-      <li>
-        <div class="image-container">
-          <img src="https://www.anilibria.tv/storage/releases/posters/9724/Wa8GgoNO4jGfBfpZik6SvZJI7yDvjain.jpg" alt="">
-          <div class="overlay"></div> <!-- Псевдоэлемент затемнения -->
-        </div>
+        <section class="upcoming">
+            <h2 class="section-title">Скоро на сайте</h2>
+            <div class="upcoming-slider">
+                <div class="upcoming-card">
+                    <div class="upcoming-image">
+                        <img src="https://cdn.myanimelist.net/images/anime/1792/138022.jpg" alt="Solo Leveling">
+                        <div class="upcoming-overlay">
+                            <div class="upcoming-info">
+                                <span class="release-date">Январь 2024</span>
+                                <h3>Solo Leveling</h3>
+                                <p>Долгожданная адаптация популярной манхвы</p>
+                                <button class="notify-btn">
+                                    <i class="fas fa-bell"></i> Уведомить
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-        <div class="behind-content">
-          <div class="content">
-          <span class="film-title">
-            Tower of God
-          </span>
-          <p class="film-data">
-            2024, Sport
-          </p>
-        </div>
-        </div>
-      </li>
-      <li>
-        <div class="image-container">
-          <img src="https://www.anilibria.tv/storage/releases/posters/9724/Wa8GgoNO4jGfBfpZik6SvZJI7yDvjain.jpg" alt="">
-          <div class="overlay"></div> <!-- Псевдоэлемент затемнения -->
-        </div>
+        <section class="top-users">
+            <h2 class="section-title">Топ пользователей</h2>
+            <div class="users-grid">
+                <div class="user-card">
+                    <div class="user-rank">1</div>
+                    <img src="https://i.pravatar.cc/150?img=1" alt="User Avatar" class="user-avatar">
+                    <div class="user-info">
+                        <h3>AnimeKing</h3>
+                        <p>Просмотрено: 1,234</p>
+                        <div class="user-badges">
+                            <i class="fas fa-crown" title="Premium"></i>
+                            <i class="fas fa-star" title="Топ рецензент"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-        <div class="behind-content">
-          <div class="content">
-          <span class="film-title">
-            Tower of God
-          </span>
-          <p class="film-data">
-            2024, Sport
-          </p>
-        </div>
-        </div>
-      </li>
-      <li>
-        <div class="image-container">
-          <img src="https://www.anilibria.tv/storage/releases/posters/9724/Wa8GgoNO4jGfBfpZik6SvZJI7yDvjain.jpg" alt="">
-          <div class="overlay"></div> <!-- Псевдоэлемент затемнения -->
-        </div>
+        <section class="newsletter">
+            <div class="newsletter-content">
+                <h2>Будь в курсе новинок</h2>
+                <p>Подпишись на нашу рассылку и получай уведомления о новых сериях</p>
+                <form class="newsletter-form">
+                    <input type="email" placeholder="Твой email" required>
+                    <button type="submit">
+                        <i class="fas fa-paper-plane"></i> Подписаться
+                    </button>
+                </form>
+            </div>
+            <div class="newsletter-decoration">
+                <i class="fas fa-envelope-open-text"></i>
+            </div>
+        </section>
+    </main>
 
-        <div class="behind-content">
-          <div class="content">
-          <span class="film-title">
-            Tower of God
-          </span>
-          <p class="film-data">
-            2024, Sport
-          </p>
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>AniStream</h3>
+                <p>Твой путь в мир аниме начинается здесь</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-discord"></i></a>
+                    <a href="#"><i class="fab fa-telegram"></i></a>
+                    <a href="#"><i class="fab fa-vk"></i></a>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h4>Навигация</h4>
+                <ul>
+                    <li><a href="#">Главная</a></li>
+                    <li><a href="#">Каталог</a></li>
+                    <li><a href="#">Расписание</a></li>
+                    <li><a href="#">Случайное</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Жанры</h4>
+                <ul>
+                    <li><a href="#">Экшен</a></li>
+                    <li><a href="#">Романтика</a></li>
+                    <li><a href="#">Фэнтези</a></li>
+                    <li><a href="#">Все жанры</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Поддержка</h4>
+                <ul>
+                    <li><a href="#">FAQ</a></li>
+                    <li><a href="#">Контакты</a></li>
+                    <li><a href="#">Правила</a></li>
+                    <li><a href="#">Конфиденциальность</a></li>
+                </ul>
+            </div>
         </div>
+        <div class="footer-bottom">
+            <p>&copy; 2023 AniStream. Все права защищены.</p>
+            <div class="footer-apps">
+                <a href="#" class="app-button">
+                    <i class="fab fa-android"></i> Android
+                </a>
+                <a href="#" class="app-button">
+                    <i class="fab fa-apple"></i> iOS
+                </a>
+            </div>
         </div>
-      </li>
-      <li>
-        <div class="image-container">
-          <img src="https://www.anilibria.tv/storage/releases/posters/9724/Wa8GgoNO4jGfBfpZik6SvZJI7yDvjain.jpg" alt="">
-          <div class="overlay"></div> <!-- Псевдоэлемент затемнения -->
-        </div>
+    </footer>
 
-        <div class="behind-content">
-          <div class="content">
-          <span class="film-title">
-            Tower of God
-          </span>
-          <p class="film-data">
-            2024, Sport
-          </p>
-        </div>
-        </div>
-      </li>
-    </ul>
-  </div>
-</section>
-
-<section id="film-anounce" class="anounce">
-  <div class="wrapper">
-    <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fimages-wixmp-ed30a86b8c4ca887773594c2.wixmp.com%2Ff%2Fae67dbcc-91f7-4369-a654-3159c9f4a09f%2Fdfsoz1w-b8c7fdb2-01bf-4b5c-bad2-157b805a41bc.jpg%2Fv1%2Ffill%2Fw_1280%2Ch_720%2Cq_75%2Cstrp%2Fhigh_quality_re_zero_4k_wallpaper_by_sdugoten_dfsoz1w-fullview.jpg%3Ftoken%3DeyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9NzIwIiwicGF0aCI6IlwvZlwvYWU2N2RiY2MtOTFmNy00MzY5LWE2NTQtMzE1OWM5ZjRhMDlmXC9kZnNvejF3LWI4YzdmZGIyLTAxYmYtNGI1Yy1iYWQyLTE1N2I4MDVhNDFiYy5qcGciLCJ3aWR0aCI6Ijw9MTI4MCJ9XV0sImF1ZCI6WyJ1cm46c2VydmljZTppbWFnZS5vcGVyYXRpb25zIl19.rL64LQsfN4gSF8U-Za-bTv_w5FEv7NKvJsHAXvNPhCg&f=1&nofb=1&ipt=9001e4ec8574db7f206d7509985bdd4588c9adef29e455d1a8689da19c4e3f50&ipo=images" alt="">
-    <div class="content">
-      <h1>
-        Your name
-      </h1>
-      <h4>
-        2nd Season
-      </h4>
-      <p>
-        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ab perferendis laboriosam praesentium velit et itaque provident delectus, illo, possimus, sequi sapiente totam reprehenderit repellendus nostrum, quae quas. Provident, non assumenda.
-      </p>
-      <button>
-        Watch Now
-      </button>
-      <button>
-        Add to List
-      </button>
-    </div>
-  </div>
-</section>
-
-<section id="content-section" class="most-popular">
-  <div class="wrapper">
-    <h3>
-      Most Popular
-    </h3>
-  </div>
-  <div class="wrapper">
-    <ul class="refresh">
-      <li>
-        <div class="image-container">
-          <img src="https://www.anilibria.tv/storage/releases/posters/9724/Wa8GgoNO4jGfBfpZik6SvZJI7yDvjain.jpg" alt="">
-          <div class="overlay"></div> <!-- Псевдоэлемент затемнения -->
-        </div>
-
-        <div class="behind-content">
-          <div class="content">
-          <span class="film-title">
-            Tower of God
-          </span>
-          <p class="film-data">
-            2024, Sport
-          </p>
-        </div>
-        </div>
-      </li>
-      <li>
-        <div class="image-container">
-          <img src="https://www.anilibria.tv/storage/releases/posters/9724/Wa8GgoNO4jGfBfpZik6SvZJI7yDvjain.jpg" alt="">
-          <div class="overlay"></div> <!-- Псевдоэлемент затемнения -->
-        </div>
-
-        <div class="behind-content">
-          <div class="content">
-          <span class="film-title">
-            Tower of God
-          </span>
-          <p class="film-data">
-            2024, Sport
-          </p>
-        </div>
-        </div>
-      </li>
-      <li>
-        <div class="image-container">
-          <img src="https://www.anilibria.tv/storage/releases/posters/9724/Wa8GgoNO4jGfBfpZik6SvZJI7yDvjain.jpg" alt="">
-          <div class="overlay"></div> <!-- Псевдоэлемент затемнения -->
-        </div>
-
-        <div class="behind-content">
-          <div class="content">
-          <span class="film-title">
-            Tower of God
-          </span>
-          <p class="film-data">
-            2024, Sport
-          </p>
-        </div>
-        </div>
-      </li>
-      <li>
-        <div class="image-container">
-          <img src="https://www.anilibria.tv/storage/releases/posters/9724/Wa8GgoNO4jGfBfpZik6SvZJI7yDvjain.jpg" alt="">
-          <div class="overlay"></div> <!-- Псевдоэлемент затемнения -->
-        </div>
-
-        <div class="behind-content">
-          <div class="content">
-          <span class="film-title">
-            Tower of God
-          </span>
-          <p class="film-data">
-            2024, Sport
-          </p>
-        </div>
-        </div>
-      </li>
-      <li>
-        <div class="image-container">
-          <img src="https://www.anilibria.tv/storage/releases/posters/9724/Wa8GgoNO4jGfBfpZik6SvZJI7yDvjain.jpg" alt="">
-          <div class="overlay"></div> <!-- Псевдоэлемент затемнения -->
-        </div>
-
-        <div class="behind-content">
-          <div class="content">
-          <span class="film-title">
-            Tower of God
-          </span>
-          <p class="film-data">
-            2024, Sport
-          </p>
-        </div>
-        </div>
-      </li>
-      <li>
-        <div class="image-container">
-          <img src="https://www.anilibria.tv/storage/releases/posters/9724/Wa8GgoNO4jGfBfpZik6SvZJI7yDvjain.jpg" alt="">
-          <div class="overlay"></div> <!-- Псевдоэлемент затемнения -->
-        </div>
-
-        <div class="behind-content">
-          <div class="content">
-          <span class="film-title">
-            Tower of God
-          </span>
-          <p class="film-data">
-            2024, Sport
-          </p>
-        </div>
-        </div>
-      </li>
-      <li>
-        <div class="image-container">
-          <img src="https://www.anilibria.tv/storage/releases/posters/9724/Wa8GgoNO4jGfBfpZik6SvZJI7yDvjain.jpg" alt="">
-          <div class="overlay"></div> <!-- Псевдоэлемент затемнения -->
-        </div>
-
-        <div class="behind-content">
-          <div class="content">
-          <span class="film-title">
-            Tower of God
-          </span>
-          <p class="film-data">
-            2024, Sport
-          </p>
-        </div>
-        </div>
-      </li>
-      <li>
-        <div class="image-container">
-          <img src="https://www.anilibria.tv/storage/releases/posters/9724/Wa8GgoNO4jGfBfpZik6SvZJI7yDvjain.jpg" alt="">
-          <div class="overlay"></div> <!-- Псевдоэлемент затемнения -->
-        </div>
-
-        <div class="behind-content">
-          <div class="content">
-          <span class="film-title">
-            Tower of God
-          </span>
-          <p class="film-data">
-            2024, Sport
-          </p>
-        </div>
-        </div>
-      </li>
-      <li>
-        <div class="image-container">
-          <img src="https://www.anilibria.tv/storage/releases/posters/9724/Wa8GgoNO4jGfBfpZik6SvZJI7yDvjain.jpg" alt="">
-          <div class="overlay"></div> <!-- Псевдоэлемент затемнения -->
-        </div>
-
-        <div class="behind-content">
-          <div class="content">
-          <span class="film-title">
-            Tower of God
-          </span>
-          <p class="film-data">
-            2024, Sport
-          </p>
-        </div>
-        </div>
-      </li>
-      <li>
-        <div class="image-container">
-          <img src="https://www.anilibria.tv/storage/releases/posters/9724/Wa8GgoNO4jGfBfpZik6SvZJI7yDvjain.jpg" alt="">
-          <div class="overlay"></div> <!-- Псевдоэлемент затемнения -->
-        </div>
-
-        <div class="behind-content">
-          <div class="content">
-          <span class="film-title">
-            Tower of God
-          </span>
-          <p class="film-data">
-            2024, Sport
-          </p>
-        </div>
-        </div>
-      </li>
-      <li>
-        <div class="image-container">
-          <img src="https://www.anilibria.tv/storage/releases/posters/9724/Wa8GgoNO4jGfBfpZik6SvZJI7yDvjain.jpg" alt="">
-          <div class="overlay"></div> <!-- Псевдоэлемент затемнения -->
-        </div>
-
-        <div class="behind-content">
-          <div class="content">
-          <span class="film-title">
-            Tower of God
-          </span>
-          <p class="film-data">
-            2024, Sport
-          </p>
-        </div>
-        </div>
-      </li>
-      <li>
-        <div class="image-container">
-          <img src="https://www.anilibria.tv/storage/releases/posters/9724/Wa8GgoNO4jGfBfpZik6SvZJI7yDvjain.jpg" alt="">
-          <div class="overlay"></div> <!-- Псевдоэлемент затемнения -->
-        </div>
-
-        <div class="behind-content">
-          <div class="content">
-          <span class="film-title">
-            Tower of God
-          </span>
-          <p class="film-data">
-            2024, Sport
-          </p>
-        </div>
-        </div>
-      </li>
-    </ul>
-  </div>
-</section>
-<footer>
-  <div class="wrapper">
-    <div class="footer-text">
-      <h1>
-        © 2024 Logo. Все права защищены.
-      </h1>
-    </div>
-  </div>
-</footer>
-
-
-
-<script>
-// JavaScript код для управления каруселью
-document.addEventListener("DOMContentLoaded", () => {
-  const carousel = document.getElementById("carousel");
-  const prevBtn = document.getElementById("prevBtn");
-  const nextBtn = document.getElementById("nextBtn");
-  const itemsPerPage = 6;
-  let currentPage = 0;
-
-  // Функция для обновления отображаемых элементов
-  function updateCarousel() {
-    const totalItems = carousel.children.length;
-    const maxPages = Math.ceil(totalItems / itemsPerPage) - 1;
-    carousel.style.transform = `translateX(-${currentPage * 102.68}%)`;
-
-    // Устанавливаем видимость кнопок
-    prevBtn.classList.toggle("disabled", currentPage === 0);
-    nextBtn.classList.toggle("disabled", currentPage === maxPages);
-  }
-
-  // Обработчик клика для кнопки "Назад"
-  prevBtn.addEventListener("click", () => {
-    if (currentPage > 0) {
-      currentPage--;
-      updateCarousel();
-    }
-  });
-
-  // Обработчик клика для кнопки "Вперед"
-  nextBtn.addEventListener("click", () => {
-    const totalItems = carousel.children.length;
-    const maxPages = Math.ceil(totalItems / itemsPerPage) - 1;
-    if (currentPage < maxPages) {
-      currentPage++;
-      updateCarousel();
-    }
-  });
-
-  // Начальное обновление карусели
-  updateCarousel();
-});
-
-
-
-</script>
-
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="js/script.js"></script>
 </body>
 </html>

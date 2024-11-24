@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AniStream - Anime Details</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/anime_details.css">
+    <link rel="stylesheet" href="css/anime_details_responsive.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+<body>
+    <!-- Навигация (скопирована с главной страницы) -->
+    <nav class="navbar">
+        <div class="nav-logo" data-aos="fade-right">
+            <span>AniStream</span>
+        </div>
+        <div class="nav-links" data-aos="fade-left">
+            <a href="index.html">Home</a>
+            <a href="anime_list.html">Anime</a>
+            <a href="anime_list.html">Movies</a>
+            <a href="anime_list.html">Popular</a>
+            <a href="anime_list.html">My List</a>
+        </div>
+        <div class="nav-buttons">
+            <button class="search-btn"><i class="fas fa-search"></i></button>
+            <button class="login-btn">Login</button>
+        </div>
+    </nav>
+
+    <!-- Главный баннер аниме -->
+    <div class="anime-banner">
+        <div class="banner-image">
+            <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwallpapercave.com%2Fwp%2Fwp8530413.jpg&f=1&nofb=1&ipt=27a975a2d1c26b69735f60afbe9bd57ad0da3880451d5b8b9dd45092b994f7b1&ipo=images" alt="Anime Banner">
+        </div>
+        <div class="banner-overlay"></div>
+        <div class="banner-content">
+            <div class="anime-poster">
+                <img src="https://cdn.myanimelist.net/images/anime/1908/120036.jpg" alt="Anime Poster">
+                <button class="watch-now-btn">
+                    <i class="fas fa-play"></i> Смотреть
+                </button>
+            </div>
+            <div class="anime-info">
+                <div class="anime-meta">
+                    <span class="anime-year">2023</span>
+                    <span class="anime-rating">PG-13</span>
+                    <span class="anime-duration">24 мин/эп</span>
+                </div>
+                <h1 class="anime-title">Jujutsu Kaisen</h1>
+                <div class="anime-genres">
+                    <span>Экшен</span>
+                    <span>Фэнтези</span>
+                    <span>Сверхъестественное</span>
+                </div>
+                <div class="anime-stats">
+                    <div class="stat">
+                        <i class="fas fa-star"></i>
+                        <span>9.2</span>
+                    </div>
+                    <div class="stat">
+                        <i class="fas fa-eye"></i>
+                        <span>1.2M</span>
+                    </div>
+                    <div class="stat">
+                        <i class="fas fa-heart"></i>
+                        <span>98K</span>
+                    </div>
+                </div>
+                <p class="anime-description">
+                    Юдзи Итадори - обычный старшеклассник, который случайно проглатывает проклятый артефакт. 
+                    Теперь у него есть выбор: быть казненным или помогать экзорцистам в борьбе с проклятиями.
+                </p>
+                <div class="action-buttons">
+                    <button class="add-to-list">
+                        <i class="fas fa-plus"></i> В список
+                    </button>
+                    <button class="share-btn">
+                        <i class="fas fa-share"></i> Поделиться
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <main class="anime-content">
+        <div class="content-wrapper">
+            <div class="main-content">
+                <!-- Секция с актерами озвучки -->
+                <section class="cast-section">
+                    <h2 class="section-title">Актеры озвучки</h2>
+                    <div class="cast-grid">
+                        <div class="cast-card">
+                            <div class="cast-image">
+                                <img src="https://www.animenewsnetwork.com/images/encyc/P3775-3.jpg" alt="Junya Enoki">
+                            </div>
+                            <div class="cast-info">
+                                <h3>Junya Enoki</h3>
+                                <p>as Yuji Itadori</p>
+                            </div>
+                        </div>
+                        <div class="cast-card">
+                            <div class="cast-image">
+                                <img src="https://www.animenewsnetwork.com/images/encyc/P5781-4.jpg" alt="Yuma Uchida">
+                            </div>
+                            <div class="cast-info">
+                                <h3>Yuma Uchida</h3>
+                                <p>as Megumi Fushiguro</p>
+                            </div>
+                        </div>
+                        <div class="cast-card">
+                            <div class="cast-image">
+                                <img src="https://www.animenewsnetwork.com/images/encyc/P4675-6.jpg" alt="Asami Seto">
+                            </div>
+                            <div class="cast-info">
+                                <h3>Asami Seto</h3>
+                                <p>as Nobara Kugisaki</p>
+                            </div>
+                        </div>
+                        <div class="cast-card">
+                            <div class="cast-image">
+                                <img src="https://www.animenewsnetwork.com/images/encyc/P1045-8.jpg" alt="Junichi Suwabe">
+                            </div>
+                            <div class="cast-info">
+                                <h3>Junichi Suwabe</h3>
+                                <p>as Sukuna</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <aside class="sidebar">
+                <div class="sidebar-section">
+                    <h3><i class="fas fa-info-circle"></i> Детали</h3>
+                    <ul class="info-list">
+                        <li><span>Статус:</span> Онгоинг</li>
+                        <li><span>Студия:</span> MAPPA</li>
+                        <li><span>Премьера:</span> Июль 2023</li>
+                        <li><span>Эпизоды:</span> 23</li>
+                        <li><span>Длительность:</span> 24 мин</li>
+                        <li><span>Жанры:</span> Экшен, Фэнтези, Сверхъестественное</li>
+                    </ul>
+                </div>
+                <div class="sidebar-section">
+                    <h3><i class="fas fa-chart-line"></i> Рейтинги</h3>
+                    <div class="rating-item">
+                        <span>MAL Score</span>
+                        <div class="rating-bar">
+                            <div class="rating-fill" style="width: 92%;">9.2</div>
+                        </div>
+                    </div>
+                </div>
+            </aside>
+        </div>
+
+        <!-- Информация о сезонах -->
+        <section class="seasons-section">
+            <h2 class="section-title">Сезоны и эпизоды</h2>
+            <div class="seasons-grid">
+                <div class="season-card">
+                    <div class="season-image">
+                        <img src="https://cdn.myanimelist.net/images/anime/1171/109222.jpg" alt="Season 1">
+                        <div class="season-overlay">
+                            <span class="episode-count">24 эпизода</span>
+                        </div>
+                    </div>
+                    <div class="season-info">
+                        <h3>Сезон 1</h3>
+                        <p>2020</p>
+                    </div>
+                </div>
+                <div class="season-card">
+                    <div class="season-image">
+                        <img src="https://cdn.myanimelist.net/images/anime/1908/120036.jpg" alt="Season 2">
+                        <div class="season-overlay">
+                            <span class="episode-count">23 эпизода</span>
+                        </div>
+                    </div>
+                    <div class="season-info">
+                        <h3>Сезон 2</h3>
+                        <p>2023</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Похожие аниме -->
+        <section class="similar-anime">
+            <h2 class="section-title">Похожие аниме</h2>
+            <div class="anime-grid">
+                <div class="anime-card">
+                    <div class="card-image">
+                        <img src="https://cdn.myanimelist.net/images/anime/1208/94745.jpg" alt="Demon Slayer">
+                        <div class="card-overlay">
+                            <button class="play-btn"><i class="fas fa-play"></i></button>
+                        </div>
+                    </div>
+                    <div class="card-info">
+                        <div class="card-tags">
+                            <span>TV</span>
+                            <span>24 эп.</span>
+                        </div>
+                        <h3>Demon Slayer</h3>
+                        <p>Экшен, Фэнтези</p>
+                    </div>
+                </div>
+                <div class="anime-card">
+                    <div class="card-image">
+                        <img src="https://cdn.myanimelist.net/images/anime/1188/136926.jpg" alt="Chainsaw Man">
+                        <div class="card-overlay">
+                            <button class="play-btn"><i class="fas fa-play"></i></button>
+                        </div>
+                    </div>
+                    <div class="card-info">
+                        <div class="card-tags">
+                            <span>TV</span>
+                            <span>12 эп.</span>
+                        </div>
+                        <h3>Chainsaw Man</h3>
+                        <p>Экшен, Хоррор</p>
+                    </div>
+                </div>
+                <div class="anime-card">
+                    <div class="card-image">
+                        <img src="https://cdn.myanimelist.net/images/anime/1337/99013.jpg" alt="Attack on Titan">
+                        <div class="card-overlay">
+                            <button class="play-btn"><i class="fas fa-play"></i></button>
+                        </div>
+                    </div>
+                    <div class="card-info">
+                        <div class="card-tags">
+                            <span>TV</span>
+                            <span>Сезон 4</span>
+                        </div>
+                        <h3>Attack on Titan</h3>
+                        <p>Драма, Экшен</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="content-wrapper">
+            <div class="main-content">
+                <!-- Секция с медиа -->
+                <section class="media-section">
+                    <h2 class="section-title">Media</h2>
+                    <div class="media-tabs">
+                        <button class="tab-btn active">Screenshots</button>
+                        <button class="tab-btn">Artwork</button>
+                        <button class="tab-btn">Trailers</button>
+                    </div>
+                    <div class="media-grid">
+                        <div class="media-item">
+                            <img src="https://example.com/screenshot1.jpg" alt="Screenshot 1">
+                        </div>
+                        <div class="media-item">
+                            <img src="https://example.com/screenshot2.jpg" alt="Screenshot 2">
+                        </div>
+                        <div class="media-item">
+                            <img src="https://example.com/screenshot3.jpg" alt="Screenshot 3">
+                        </div>
+                    </div>
+                </section>
+        
+                <!-- Существующие секции -->
+            </div>
+        </div>
+
+        <!-- Комментарии -->
+        <section class="comments-section">
+            <h2 class="section-title">Комментарии</h2>
+            <div class="comments-container">
+                <div class="comment-form">
+                    <textarea placeholder="Оставьте свой комментарий..."></textarea>
+                    <button class="submit-comment">Отправить</button>
+                </div>
+                <div class="comments-list">
+                    <div class="comment">
+                        <div class="comment-avatar">
+                            <img src="https://api.dicebear.com/6.x/avataaars/svg?seed=Felix" alt="User Avatar">
+                        </div>
+                        <div class="comment-content">
+                            <div class="comment-header">
+                                <h4>Александр</h4>
+                                <span>2 дня назад</span>
+                            </div>
+                            <p>Лучшее аниме этого сезона! Анимация просто невероятная!</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer (скопирован с главной страницы) -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>AniStream</h3>
+                <p>Твой путь в мир аниме</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-discord"></i></a>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h4>Навигация</h4>
+                <ul>
+                    <li><a href="#">Главная</a></li>
+                    <li><a href="#">Аниме</a></li>
+                    <li><a href="#">Фильмы</a></li>
+                    <li><a href="#">Популярное</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Правовое</h4>
+                <ul>
+                    <li><a href="#">Условия использования</a></li>
+                    <li><a href="#">Политика конфиденциальности</a></li>
+                    <li><a href="#">DMCA</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2023 AniStream. Все права защищены.</p>
+        </div>
+    </footer>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="js/script.js"></script>
+    <script>
+        AOS.init();
+    </script>
+</body>
+</html>

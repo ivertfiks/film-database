@@ -1,0 +1,438 @@
+/* Основной контейнер */
+.anime-list-container {
+    display: flex;
+    gap: 2rem;
+    padding: 2rem 5%;
+    margin-top: var(--nav-height);
+    min-height: calc(100vh - var(--nav-height));
+    background-color: var(--background-dark);
+}
+
+/* Стили для сайдбара с фильтрами */
+.filters-sidebar {
+    flex: 0 0 300px;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 1.5rem;
+    border-radius: 10px;
+    height: fit-content;
+    position: sticky;
+    top: calc(var(--nav-height) + 2rem);
+}
+
+.filter-section {
+    margin-bottom: 1.5rem;
+}
+
+.filter-section h3 {
+    color: var(--text-primary);
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+/* Поле поиска */
+.search-box {
+    position: relative;
+    margin-bottom: 1rem;
+}
+
+.search-box input {
+    width: 100%;
+    padding: 0.8rem 2.5rem 0.8rem 1rem;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 5px;
+    color: var(--text-primary);
+    font-size: 0.9rem;
+}
+
+.search-box i {
+    position: absolute;
+    right: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--text-secondary);
+}
+
+/* Жанры */
+.genre-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.tag-checkbox {
+    display: inline-flex;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.tag-checkbox input {
+    display: none;
+}
+
+.tag-checkbox span {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+}
+
+.tag-checkbox input:checked + span {
+    color: var(--primary-color);
+}
+
+/* Год выпуска */
+.year-range {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.year-range input {
+    width: 45%;
+    padding: 0.5rem;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 5px;
+    color: var(--text-primary);
+}
+
+/* Рейтинг */
+.rating-slider {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.rating-slider input[type="range"] {
+    flex: 1;
+    height: 4px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 2px;
+    outline: none;
+}
+
+.rating-value {
+    min-width: 40px;
+    color: var(--text-secondary);
+}
+
+/* Статус */
+.status-select {
+    width: 100%;
+    padding: 0.8rem;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 5px;
+    color: var(--text-primary);
+}
+
+/* Кнопки фильтров */
+.apply-filters,
+.reset-filters {
+    width: 100%;
+    padding: 0.8rem;
+    border: none;
+    border-radius: 5px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-bottom: 0.5rem;
+}
+
+.apply-filters {
+    background: var(--primary-color);
+    color: white;
+}
+
+.reset-filters {
+    background: rgba(255, 255, 255, 0.1);
+    color: var(--text-secondary);
+}
+
+/* Основной контент */
+.anime-grid-container {
+    flex: 1;
+}
+
+/* Контролы сортировки */
+.sort-controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+
+.sort-select {
+    padding: 0.5rem 1rem;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 5px;
+    color: var(--text-primary);
+}
+
+.view-toggle {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.view-toggle button {
+    padding: 0.5rem;
+    background: rgba(255, 255, 255, 0.1);
+    border: none;
+    border-radius: 5px;
+    color: var(--text-secondary);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.view-toggle button.active {
+    background: var(--primary-color);
+    color: white;
+}
+
+/* Сетка аниме */
+.anime-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 1.2rem;
+    margin-bottom: 2rem;
+    padding: 0 1rem;
+}
+
+/* Карточка аниме */
+.anime-card {
+    position: relative;
+    border-radius: 10px;
+    overflow: hidden;
+    background: rgba(255, 255, 255, 0.05);
+    transition: all 0.3s ease;
+    height: 100%;
+}
+
+.card-image {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+}
+
+.card-image img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.anime-card:hover .card-image img {
+    transform: scale(1.05);
+}
+
+.card-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.3) 50%, rgba(0,0,0,0.1) 100%);
+    opacity: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 0.8rem; /* Уменьшаем отступы */
+    transition: all 0.3s ease;
+}
+
+.anime-card:hover .card-overlay {
+    opacity: 1;
+}
+
+.card-stats {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 0.8rem; /* Уменьшаем отступ */
+    color: white;
+    font-size: 0.85rem; /* Уменьшаем размер шрифта */
+}
+
+.rating {
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+}
+
+.rating i {
+    color: #FFD700;
+}
+
+.watch-btn {
+    width: 100%;
+    padding: 0.6rem; /* Уменьшаем высоту кнопки */
+    background: var(--primary-color);
+    border: none;
+    border-radius: 5px;
+    color: white;
+    font-weight: 500;
+    font-size: 0.9rem; /* Уменьшаем размер шрифта */
+    cursor: pointer;
+    transition: all 0.3s ease;
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+.anime-card:hover .watch-btn {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.watch-btn:hover {
+    background: var(--secondary-color);
+}
+
+.card-info {
+    padding: 0.8rem; /* Уменьшаем отступы */
+}
+
+.card-info h3 {
+    color: var(--text-primary);
+    font-size: 1rem; /* Уменьшаем размер заголовка */
+    margin-bottom: 0.4rem; /* Уменьшаем отступ */
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.card-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem; /* Уменьшаем отступы между тегами */
+}
+
+.card-tags span {
+    padding: 0.2rem 0.6rem; /* Уменьшаем отступы в тегах */
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    color: var(--text-secondary);
+    font-size: 0.75rem; /* Уменьшаем размер шрифта */
+}
+
+/* Список */
+.anime-grid.list-layout {
+    grid-template-columns: 1fr;
+}
+
+.list-layout .anime-card {
+    display: flex;
+    height: 200px;
+}
+
+.list-layout .card-image {
+    width: 140px;
+    padding-top: 0;
+    flex-shrink: 0;
+}
+
+.list-layout .card-info {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.list-layout .card-info h3 {
+    font-size: 1.3rem;
+    white-space: normal;
+}
+
+.list-layout .card-overlay {
+    padding: 1.5rem;
+}
+
+/* Пагинация */
+.pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    margin-top: 2rem;
+}
+
+.page-numbers {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.page-numbers span {
+    width: 35px;
+    height: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.page-numbers span.active {
+    background: var(--primary-color);
+    color: white;
+}
+
+.prev-page,
+.next-page {
+    background: rgba(255, 255, 255, 0.1);
+    border: none;
+    width: 35px;
+    height: 35px;
+    border-radius: 5px;
+    color: var(--text-primary);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.prev-page:hover,
+.next-page:hover {
+    background: var(--primary-color);
+}
+
+/* Адаптивность */
+@media (max-width: 1400px) {
+    .anime-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+@media (max-width: 1200px) {
+    .anime-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .anime-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 480px) {
+    .anime-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Анимации */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

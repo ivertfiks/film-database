@@ -1,0 +1,139 @@
+/* Общие стили для мобильных устройств (до 768px) */
+@media screen and (max-width: 768px) {
+    .anime-banner {
+        height: auto;
+        padding: 20px;
+    }
+
+    .banner-content {
+        flex-direction: column;
+        padding: 20px;
+    }
+
+    .anime-poster {
+        width: 200px;
+        margin: 0 auto 20px;
+    }
+
+    .anime-info {
+        width: 100%;
+        padding-left: 0;
+    }
+
+    .content-wrapper {
+        flex-direction: column;
+        padding: 20px;
+    }
+
+    .main-content {
+        width: 100%;
+    }
+
+    .sidebar {
+        width: 100%;
+        margin-top: 20px;
+    }
+
+    .cast-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 15px;
+    }
+
+    .seasons-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .anime-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 15px;
+    }
+
+    .nav-links {
+        display: none;
+    }
+
+    .nav-buttons {
+        margin-left: auto;
+    }
+}
+
+/* Стили для планшетов (768px - 1024px) */
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+    .content-wrapper {
+        padding: 30px 20px;
+    }
+
+    .main-content {
+        flex: 1;
+    }
+
+    .sidebar {
+        width: 300px;
+    }
+
+    .cast-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 20px;
+    }
+
+    .seasons-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .anime-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+/* Стили для десктопов (больше 1024px) */
+@media screen and (min-width: 1025px) {
+    .content-wrapper {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 50px 30px;
+    }
+
+    .main-content {
+        flex: 1;
+    }
+
+    .sidebar {
+        width: 350px;
+    }
+
+    .cast-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 25px;
+    }
+
+    .seasons-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .anime-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+/* Улучшения для больших экранов (больше 1440px) */
+@media screen and (min-width: 1441px) {
+    .content-wrapper {
+        max-width: 1400px;
+    }
+
+    .cast-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+
+    .seasons-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+
+    .anime-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+
+    .sidebar {
+        width: 400px;
+    }
+}
