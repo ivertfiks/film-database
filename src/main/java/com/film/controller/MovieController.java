@@ -2,6 +2,7 @@ package com.film.controller;
 
 import com.film.client.MovieDatabaseHttpClient;
 import com.film.entity.Movie;
+import com.film.entity.MovieDetails;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
@@ -24,6 +25,16 @@ public class MovieController {
         model.addAttribute("movies", movies);
         return "index";
     }
+
+    @GetMapping("/movie_details/{id}")
+    public String getMovieDetails(Model model, @PathVariable("id") String id) {
+        log.info("Fetching movie details for ID: {}", id);
+        MovieDetails movie = movieClient.getMovieDetails(id);
+        model.addAttribute("movie", movie);
+        return "anime_details";
+    }
+
+
 
 //    @GetMapping("/movie/{id}")
 //    public String getMovieDetails(@PathVariable("id") String id, Model model) {

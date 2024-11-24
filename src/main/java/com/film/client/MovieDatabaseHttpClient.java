@@ -2,6 +2,7 @@ package com.film.client;
 
 import com.film.entity.Movie;
 import com.film.client.endpoints.MovieDbEndpoints;
+import com.film.entity.MovieDetails;
 import com.film.entity.responses.MovieResponse;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
@@ -43,6 +44,29 @@ public class MovieDatabaseHttpClient {
                     .block();
         } catch (WebClientResponseException ex) {
             log.error("Failed to fetch trending movies. Status code: {}", ex.getStatusCode());
+            log.error("Error message: {}", ex.getResponseBodyAsString());
+            throw new RuntimeException("Failed to fetch movie data", ex);
+        }
+    }
+
+    public MovieDetails getMovieDetails(String id) {
+        log.info("Sending request to fetch movie details for id: {}", id);
+        log.info("Authorization Token: Bearer {}", accessToken);
+        log.info("Base URL: {}", baseUrl);
+
+        try {
+            return restClient.get()
+                    .uri(uriBuilder -> uriBuilder
+                            .path(MovieDbEndpoints.GET_MOVIE_DETAILS_BY_ID)
+                            .queryParam("language", "en-US")
+                            .build(id))
+                    .header("Authorization", "Bearer " + accessToken)
+                    .header("accept", "application/json")
+                    .retrieve()
+                    .bodyToMono(MovieDetails.class)
+                    .block();
+        } catch (WebClientResponseException ex) {
+            log.error("Failed to fetch movie details for id: {}. Status code: {}", id, ex.getStatusCode());
             log.error("Error message: {}", ex.getResponseBodyAsString());
             throw new RuntimeException("Failed to fetch movie data", ex);
         }

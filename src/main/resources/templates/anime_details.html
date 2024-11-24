@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AniStream - Anime Details</title>
-    <link rel="stylesheet" href="css/styles.css">
-    <link rel="stylesheet" href="css/anime_details.css">
-    <link rel="stylesheet" href="css/anime_details_responsive.css">
+    <link rel="stylesheet" th:href="@{/css/styles.css}">
+    <link rel="stylesheet" th:href="@{/css/anime_details.css}">
+    <link rel="stylesheet" th:href="@{/css/anime_details_responsive.css}">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
@@ -18,11 +18,11 @@
             <span>AniStream</span>
         </div>
         <div class="nav-links" data-aos="fade-left">
-            <a href="index.html">Home</a>
-            <a href="anime_list.html">Anime</a>
-            <a href="anime_list.html">Movies</a>
-            <a href="anime_list.html">Popular</a>
-            <a href="anime_list.html">My List</a>
+            <a th:href="@{/}">Home</a>
+            <a th:href="@{/anime}">Anime</a>
+            <a th:href="@{/movies}">Movies</a>
+            <a th:href="@{/popular}">Popular</a>
+            <a th:href="@{/mylist}">My List</a>
         </div>
         <div class="nav-buttons">
             <button class="search-btn"><i class="fas fa-search"></i></button>
@@ -33,45 +33,33 @@
     <!-- Главный баннер аниме -->
     <div class="anime-banner">
         <div class="banner-image">
-            <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwallpapercave.com%2Fwp%2Fwp8530413.jpg&f=1&nofb=1&ipt=27a975a2d1c26b69735f60afbe9bd57ad0da3880451d5b8b9dd45092b994f7b1&ipo=images" alt="Anime Banner">
+            <img th:if="${movie.backdropPath}" th:src="@{'https://image.tmdb.org/t/p/original' + ${movie.backdropPath}}" alt="Anime Banner">
         </div>
         <div class="banner-overlay"></div>
         <div class="banner-content">
             <div class="anime-poster">
-                <img src="https://cdn.myanimelist.net/images/anime/1908/120036.jpg" alt="Anime Poster">
+                <img th:if="${movie.posterPath}" th:src="@{'https://image.tmdb.org/t/p/w500' + ${movie.posterPath}}" th:alt="${movie.title}">
                 <button class="watch-now-btn">
                     <i class="fas fa-play"></i> Смотреть
                 </button>
             </div>
             <div class="anime-info">
                 <div class="anime-meta">
-                    <span class="anime-year">2023</span>
-                    <span class="anime-rating">PG-13</span>
-                    <span class="anime-duration">24 мин/эп</span>
+                    <span class="anime-year" th:text="${#strings.substring(movie.releaseDate, 0, 4)}">2023</span>
+                    <span class="anime-rating" th:text="${movie.adult ? 'R' : 'PG-13'}">PG-13</span>
+                    <span class="anime-duration" th:text="${movie.mediaType}">24 мин/эп</span>
                 </div>
-                <h1 class="anime-title">Jujutsu Kaisen</h1>
-                <div class="anime-genres">
-                    <span>Экшен</span>
-                    <span>Фэнтези</span>
-                    <span>Сверхъестественное</span>
-                </div>
-                <div class="anime-stats">
-                    <div class="stat">
+                <h1 class="anime-title" th:text="${movie.title}">Название аниме</h1>
+                <h2 class="anime-original-title" th:text="${movie.originalTitle}">Original Title</h2>
+                <div class="rating">
+                    <span class="stars">
                         <i class="fas fa-star"></i>
-                        <span>9.2</span>
-                    </div>
-                    <div class="stat">
-                        <i class="fas fa-eye"></i>
-                        <span>1.2M</span>
-                    </div>
-                    <div class="stat">
-                        <i class="fas fa-heart"></i>
-                        <span>98K</span>
-                    </div>
+                        <span th:text="${#numbers.formatDecimal(movie.voteAverage, 1, 1)}">8.7</span>
+                    </span>
+                    <span class="votes" th:text="${'(' + movie.voteCount + ' голосов)'}"></span>
                 </div>
-                <p class="anime-description">
-                    Юдзи Итадори - обычный старшеклассник, который случайно проглатывает проклятый артефакт. 
-                    Теперь у него есть выбор: быть казненным или помогать экзорцистам в борьбе с проклятиями.
+                <p class="anime-description" th:text="${movie.overview}">
+                    Описание аниме...
                 </p>
                 <div class="action-buttons">
                     <button class="add-to-list">
@@ -332,7 +320,7 @@
     </footer>
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script src="js/script.js"></script>
+    <script th:src="@{/js/script.js}"></script>
     <script>
         AOS.init();
     </script>

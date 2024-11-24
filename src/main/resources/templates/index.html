@@ -78,18 +78,20 @@
                         </div>
                         <h3 th:text="${movie.title}">Название фильма</h3>
                         <p th:text="${movie.overview}">Описание фильма</p>
-                        <a th:href="@{'/anime_details.html?id=' + ${movie.id}}" class="watch-now">Смотреть</a>
+                        <a th:href="@{'/movie_details/' + ${movie.id}}" class="watch-now">Смотреть</a>
                     </div>
                 </div>
                 <!-- Боковые фильмы -->
                 <div class="featured-side" th:if="${not #lists.isEmpty(movies)}">
                     <div class="side-item" th:each="movie : ${movies}" th:if="${movieStat.index > 0 && movieStat.index < 3}">
-                        <img th:src="${'https://image.tmdb.org/t/p/w500' + movie.posterPath}" 
-                             th:alt="${movie.title}">
-                        <div class="side-content">
-                            <h4 th:text="${movie.title}">Название фильма</h4>
-                            <p th:text="${#strings.substring(movie.releaseDate, 0, 4)}">2023</p>
-                        </div>
+                        <a th:href="@{'/movie_details/' + ${movie.id}}">
+                            <img th:src="${'https://image.tmdb.org/t/p/w500' + movie.posterPath}" 
+                                 th:alt="${movie.title}">
+                            <div class="side-content">
+                                <h4 th:text="${movie.title}">Название фильма</h4>
+                                <p th:text="${#strings.substring(movie.releaseDate, 0, 4)}">2023</p>
+                            </div>
+                        </a>
                     </div>
                 </div>
             </div>
@@ -131,10 +133,9 @@
                         <img th:src="${'https://image.tmdb.org/t/p/w500' + movie.posterPath}" 
                              th:alt="${movie.title}">
                         <div class="card-overlay">
-                            <button class="play-btn" 
-                                    th:onclick="'window.location.href=\'' + @{'/anime_details.html?id=' + ${movie.id}} + '\''">
+                            <a th:href="@{'/movie_details/' + ${movie.id}}" class="play-btn">
                                 <i class="fas fa-play"></i>
-                            </button>
+                            </a>
                         </div>
                     </div>
                     <div class="card-info">

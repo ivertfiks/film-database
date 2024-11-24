@@ -6,6 +6,6 @@ import lombok.experimental.UtilityClass;
 public class MovieDbEndpoints {
 
     public static final String GET_TOP_TRENDING_MOVIES = "/trending/movie/day";
-
+    public static final String GET_MOVIE_DETAILS_BY_ID = "/movie/{id}";
 
 }
