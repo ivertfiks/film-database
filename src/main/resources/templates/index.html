@@ -14,11 +14,11 @@
             <span>AniStream</span>
         </div>
         <div class="nav-links" data-aos="fade-left">
-            <a href="index.html" class="active">Home</a>
-            <a href="anime_list.html">Anime</a>
-            <a href="anime_list.html">Movies</a>
-            <a href="anime_list.html">Popular</a>
-            <a href="anime_list.html">My List</a>
+            <a th:href="@{'/'}" class="active">Home</a>
+            <a th:href="@{'/movie-list'}">Anime</a>
+            <a th:href="@{'/movie-list'}">Movies</a>
+            <a th:href="@{'/movie-list'}">Popular</a>
+            <a th:href="@{'/movie-list'}">My List</a>
         </div>
         <div class="nav-buttons">
             <button class="search-btn"><i class="fas fa-search"></i></button>
@@ -28,7 +28,7 @@
 
     <header class="hero">
         <video class="hero-video" autoplay loop muted playsinline>
-            <source src="https://rr3---sn-4g5e6nzz.googlevideo.com/videoplayback?expire=1732474856&ei=iCNDZ9r3D82hp-oPxLDbgAg&ip=102.101.215.220&id=o-ACqwOL-IzEWkhcaPgtUNvHXdEuM27iiuiZ-zH6DjPvC4&itag=401&source=youtube&requiressl=yes&xpc=EgVo2aDSNQ%3D%3D&bui=AQn3pFRIWvhShw_TD2kdBR6pxG8te1F7P3DnKpxnniFHICJBZoB4BZ8JB36ImaeYOvbrT56bZHeVwGFM&vprv=1&mime=video%2Fmp4&rqh=1&gir=yes&clen=292416918&dur=234.999&lmt=1682884807088419&keepalive=yes&fexp=24350590,24350655,24350675,24350705,24350737,51326932,51335594&c=ANDROID_VR&txp=5532434&sparams=expire%2Cei%2Cip%2Cid%2Citag%2Csource%2Crequiressl%2Cxpc%2Cbui%2Cvprv%2Cmime%2Crqh%2Cgir%2Cclen%2Cdur%2Clmt&sig=AJfQdSswRAIgKA1-I91RQ0S_WH4EW24ZNy8HRCWKYnFKUXaIztflbFYCIFIvUzMHFiRgndd_8NC6tl1Q0tlba6JlLXcuIowxs1Oy&rm=sn-hxqpuxa-jhor7z&rrc=79,80&req_id=bfbedfc116fba3ee&redirect_counter=2&cm2rm=sn-h5q6l7e&cms_redirect=yes&cmsv=e&met=1732459969,&mh=6K&mip=46.205.207.221&mm=34&mn=sn-4g5e6nzz&ms=ltu&mt=1732458535&mv=u&mvi=3&pl=22&rms=ltu,au&lsparams=met,mh,mip,mm,mn,ms,mv,mvi,pl,rms&lsig=AGluJ3MwRQIgLN0Fc1SBvXoNjyyUfZxABvTQ5nrivXtYsXrYjejYXRICIQCfcalp9wLaMqGHOZfTnt-JEto7Z7BWbyL_ek9_s4TcYg%3D%3D" type="video/mp4">
+            <source src="https://rr3---sn-4g5edndy.googlevideo.com/videoplayback?expire=1732534306&ei=wgtEZ_bHJraX1d8PlICbsQs&ip=1.234.109.17&id=o-AHksbZW6p_AnDeZdE-8MyBLyu6x3XU7nCpDspcz9iMsq&itag=313&source=youtube&requiressl=yes&xpc=EgVo2aDSNQ%3D%3D&bui=AQn3pFSI2lwrNeAw2yFKIOjkWhhYOzXIC4WQZ9SHlLDlXAHa4DOZzdwbj89fhrWAZypIorcekz-uKCxk&vprv=1&mime=video%2Fwebm&rqh=1&gir=yes&clen=178603988&dur=193.443&lmt=1642785580147713&keepalive=yes&fexp=24350590,24350655,24350675,24350705,24350737,51326932,51335594&c=ANDROID_VR&txp=6316224&sparams=expire%2Cei%2Cip%2Cid%2Citag%2Csource%2Crequiressl%2Cxpc%2Cbui%2Cvprv%2Cmime%2Crqh%2Cgir%2Cclen%2Cdur%2Clmt&sig=AJfQdSswRQIhAOhE4uWk-P6NWvW6m3CiTl-i-OBUTrhs1j1rRG4slU02AiBT-lPWlJO3epvoByZvKEGHb4fJWWwpvpWs7rKt1u9iCw%3D%3D&rm=sn-n3cgv5qc5oq-bh2sr76&rrc=79,80&req_id=a220cfd67bbba3ee&cmsv=e&redirect_counter=2&cm2rm=sn-3pmss7l&cms_redirect=yes&met=1732512715,&mh=V7&mip=46.205.207.221&mm=34&mn=sn-4g5edndy&ms=ltu&mt=1732512278&mv=m&mvi=3&pl=22&rms=ltu,au&lsparams=met,mh,mip,mm,mn,ms,mv,mvi,pl,rms&lsig=AGluJ3MwRgIhAOPIDXSVoZx_SXpUNe9Fz6GsIosw3ikcGPOdqT41LQFUAiEAnT4yinR8443JRe85iyHr11jocR7Krn8tZIZCaDEr4Sc%3D" type="video/mp4">
         </video>
         <div class="hero-overlay"></div>
         <div class="hero-content">
@@ -168,24 +168,6 @@
                                     <i class="fas fa-bell"></i> Уведомить
                                 </button>
                             </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section class="top-users">
-            <h2 class="section-title">Топ пользователей</h2>
-            <div class="users-grid">
-                <div class="user-card">
-                    <div class="user-rank">1</div>
-                    <img src="https://i.pravatar.cc/150?img=1" alt="User Avatar" class="user-avatar">
-                    <div class="user-info">
-                        <h3>AnimeKing</h3>
-                        <p>Просмотрено: 1,234</p>
-                        <div class="user-badges">
-                            <i class="fas fa-crown" title="Premium"></i>
-                            <i class="fas fa-star" title="Топ рецензент"></i>
                         </div>
                     </div>
                 </div>

@@ -480,33 +480,86 @@
 }
 
 .rating-item {
-    margin-bottom: 15px;
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 12px;
+    padding: 15px;
+    margin-bottom: 20px;
+    transition: transform 0.2s ease;
+}
+
+.rating-item:hover {
+    transform: translateY(-2px);
+    background: rgba(255, 255, 255, 0.05);
 }
 
 .rating-item span {
     display: block;
-    margin-bottom: 5px;
+    margin-bottom: 10px;
     color: var(--text-primary);
+    font-size: 0.95rem;
+    font-weight: 500;
 }
 
 .rating-bar {
     width: 100%;
     height: 8px;
-    background: rgba(255,255,255,0.1);
+    background: rgba(255, 255, 255, 0.1);
     border-radius: 4px;
     overflow: hidden;
+    margin-bottom: 15px;
 }
 
 .rating-fill {
     height: 100%;
-    background: var(--primary-color);
+    background: linear-gradient(90deg, var(--primary-color) 0%, var(--secondary-color) 100%);
     border-radius: 4px;
+    position: relative;
+    transition: width 0.3s ease-out;
+}
+
+.rating-fill::after {
+    content: attr(data-rating);
+    position: absolute;
+    right: 0;
+    top: -25px;
+    color: var(--text-primary);
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+.rating-details {
+    margin-top: 20px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+}
+
+.rating-details p {
     display: flex;
     align-items: center;
-    justify-content: flex-end;
-    padding-right: 5px;
-    font-size: 0.8rem;
-    color: white;
+    gap: 8px;
+    color: var(--text-secondary);
+    font-size: 0.85rem;
+    padding: 8px 12px;
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 8px;
+    transition: background 0.2s ease;
+}
+
+.rating-details p:hover {
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.rating-details i {
+    color: var(--primary-color);
+    font-size: 1rem;
+}
+
+.rating-details span {
+    margin: 0;
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    font-weight: normal;
 }
 
 /* Стили для секции медиа */

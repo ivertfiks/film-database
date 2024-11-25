@@ -27,20 +27,27 @@ public class MovieController {
         return "index";
     }
 
+    @GetMapping(value = {"/movie-list", "/movie-list/{page}"})
+    public String getAllMovies(Model model) {
+        List<Movie> movies = movieClient.getTopTrending();
+        model.addAttribute("movies", movies);
+        return "anime_list";
+    }
+
     @GetMapping("/movie_details/{id}")
     public String getMovieDetailsWithCredits(Model model, @PathVariable("id") String id) {
-        log.info("Fetching movie details and credits for ID: {}", id);
-
-        // Получаем детали фильма
         MovieDetails movie = movieClient.getMovieDetails(id);
         model.addAttribute("movie", movie);
-
-        // Получаем актёров (credits)
         List<Person> persons = movieClient.getMovieCredits(id);
         model.addAttribute("persons", persons);
-
-        // Возвращаем общий шаблон
         return "anime_details";
+    }
+
+    @GetMapping("/person_details/{id}")
+    public String getCreditsById(Model model, @PathVariable("id") String id) {
+        Person person = movieClient.getCreditById(id);
+        model.addAttribute("person", person);
+        return "person_details";
     }
 
 

@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AniStream - Person Details</title>
+    <link rel="stylesheet" th:href="@{/css/styles.css}">
+    <link rel="stylesheet" th:href="@{/css/anime_details.css}">
+    <link rel="stylesheet" th:href="@{/css/person_details.css}">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Навигация -->
+    <nav class="navbar">
+        <div class="nav-logo" data-aos="fade-right">
+            <span>AniStream</span>
+        </div>
+        <div class="nav-links" data-aos="fade-left">
+            <a th:href="@{'/'}">Home</a>
+            <a th:href="@{'/movie-list'}">Anime</a>
+            <a th:href="@{'/movie-list'}">Movies</a>
+            <a th:href="@{'/movie-list'}">Popular</a>
+            <a th:href="@{'/movie-list'}">My List</a>
+        </div>
+        <div class="nav-buttons">
+            <button class="search-btn"><i class="fas fa-search"></i></button>
+            <button class="login-btn">Login</button>
+        </div>
+    </nav>
+
+    <!-- Главный баннер персоны -->
+    <div class="person-banner">
+        <div class="banner-overlay"></div>
+        <div class="banner-content">
+            <div class="person-poster" data-aos="fade-right">
+                <img th:if="${person.profilePath}" 
+                     th:src="@{'https://image.tmdb.org/t/p/w500' + ${person.profilePath}}" 
+                     th:alt="${person.name}">
+                <img th:unless="${person.profilePath}"
+                     src="/images/default-profile.jpg"
+                     th:alt="${person.name}">
+            </div>
+            <div class="person-info" data-aos="fade-left">
+                <div class="person-meta">
+                    <span class="department" th:text="${person.knownForDepartment}">Acting</span>
+                    <span class="gender" th:text="${person.gender == 1 ? 'Female' : 'Male'}">Gender</span>
+                    <span class="adult-flag" th:if="${person.adult}">18+</span>
+                </div>
+                <h1 class="person-name" th:text="${person.name}">Имя актера</h1>
+                <h2 class="person-original-name" th:text="${person.originalName}">Original Name</h2>
+                <div class="popularity-score">
+                    <div class="score-item">
+                        <i class="fas fa-fire"></i>
+                        <span th:text="${#numbers.formatDecimal(person.popularity, 1, 1)}">8.7</span>
+                        <small>Popularity</small>
+                    </div>
+                </div>
+                <div class="person-roles" th:if="${person.character}">
+                    <h3><i class="fas fa-theater-masks"></i> Known For Role</h3>
+                    <p class="character-name" th:text="${person.character}">Character Name</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <main class="person-content">
+        <div class="content-wrapper">
+            <div class="main-content">
+                <!-- Биография -->
+                <section class="biography-section" data-aos="fade-up">
+                    <h2 class="section-title"><i class="fas fa-book"></i> Biography</h2>
+                    <div class="biography-content">
+                        <p>Biography content will be here...</p>
+                    </div>
+                </section>
+
+                <!-- Фильмография -->
+                <section class="filmography-section" data-aos="fade-up">
+                    <h2 class="section-title"><i class="fas fa-film"></i> Filmography</h2>
+                    <div class="filmography-grid">
+                        <!-- Здесь будет список фильмов -->
+                        <div class="coming-soon">
+                            <i class="fas fa-clock"></i>
+                            <p>Filmography coming soon...</p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Галерея -->
+                <section class="gallery-section" data-aos="fade-up">
+                    <h2 class="section-title"><i class="fas fa-images"></i> Gallery</h2>
+                    <div class="gallery-grid">
+                        <!-- Здесь будет галерея изображений -->
+                        <div class="coming-soon">
+                            <i class="fas fa-camera"></i>
+                            <p>Gallery coming soon...</p>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <!-- Боковая панель -->
+            <aside class="sidebar" data-aos="fade-left">
+                <div class="sidebar-section">
+                    <h3><i class="fas fa-info-circle"></i> Details</h3>
+                    <ul class="info-list">
+                        <li>
+                            <span>Known For:</span>
+                            <span th:text="${person.knownForDepartment}">Department</span>
+                        </li>
+                        <li>
+                            <span>Gender:</span>
+                            <span th:text="${person.gender == 1 ? 'Female' : 'Male'}">Gender</span>
+                        </li>
+                        <li>
+                            <span>Cast ID:</span>
+                            <span th:text="${person.castId}">Cast ID</span>
+                        </li>
+                        <li>
+                            <span>Credit ID:</span>
+                            <span th:text="${person.creditId}">Credit ID</span>
+                        </li>
+                        <li>
+                            <span>Order:</span>
+                            <span th:text="${person.order}">Order</span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="sidebar-section">
+                    <h3><i class="fas fa-chart-line"></i> Statistics</h3>
+                    <div class="rating-item">
+                        <span>Popularity Score</span>
+                        <div class="rating-bar">
+                            <div class="rating-fill" 
+                                 th:style="'width: ' + ${person.popularity * 10} + '%'"
+                                 th:attr="data-rating=${#numbers.formatDecimal(person.popularity, 1, 1)}">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="sidebar-section">
+                    <h3><i class="fas fa-share-alt"></i> Share</h3>
+                    <div class="social-share">
+                        <a href="#" class="share-btn facebook">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="share-btn twitter">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="share-btn instagram">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                    </div>
+                </div>
+            </aside>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>About Us</h3>
+                <p>AniStream - your source for anime and movies</p>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="#">About</a></li>
+                    <li><a href="#">Contact</a></li>
+                    <li><a href="#">Terms</a></li>
+                    <li><a href="#">Privacy</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Follow Us</h3>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 AniStream. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            duration: 800,
+            once: true
+        });
+    </script>
+</body>
+</html>

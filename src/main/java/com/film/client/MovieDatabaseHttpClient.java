@@ -7,6 +7,7 @@ import com.film.entity.Person;
 import com.film.entity.responses.MovieResponse;
 import java.util.List;
 
+import com.film.entity.responses.PersonDetailsResponse;
 import com.film.entity.responses.PersonResponse;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -72,6 +73,25 @@ public class MovieDatabaseHttpClient {
                     .block();
         } catch (WebClientResponseException ex) {
             log.error("Failed to fetch movie credits for id: {}. Status code: {}", id, ex.getStatusCode());
+            log.error("Error message: {}", ex.getResponseBodyAsString());
+            throw new RuntimeException("Failed to fetch movie data", ex);
+        }
+    }
+
+    public Person getCreditById(String id) {
+        try {
+            return restClient.get()
+                    .uri(uriBuilder -> uriBuilder
+                            .path(MovieDbEndpoints.GET_CREDIT_BY_ID)
+                            .queryParam("language", "en-US")
+                            .build(id))
+                    .header("Authorization", "Bearer " + accessToken)
+                    .header("accept", "application/json")
+                    .retrieve()
+                    .bodyToMono(Person.class)
+                    .block();
+        } catch (WebClientResponseException ex) {
+            log.error("Failed to fetch credit for id: {}. Status code: {}", id, ex.getStatusCode());
             log.error("Error message: {}", ex.getResponseBodyAsString());
             throw new RuntimeException("Failed to fetch movie data", ex);
         }

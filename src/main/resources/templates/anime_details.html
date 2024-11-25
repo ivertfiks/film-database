@@ -18,11 +18,11 @@
             <span>AniStream</span>
         </div>
         <div class="nav-links" data-aos="fade-left">
-            <a th:href="@{/}">Home</a>
-            <a th:href="@{/anime}">Anime</a>
-            <a th:href="@{/movies}">Movies</a>
-            <a th:href="@{/popular}">Popular</a>
-            <a th:href="@{/mylist}">My List</a>
+            <a th:href="@{'/'}">Home</a>
+            <a th:href="@{'/movie-list'}" class="active">Anime</a>
+            <a th:href="@{'/movie-list'}">Movies</a>
+            <a th:href="@{'/movie-list'}">Popular</a>
+            <a th:href="@{'/movie-list'}">My List</a>
         </div>
         <div class="nav-buttons">
             <button class="search-btn"><i class="fas fa-search"></i></button>
@@ -80,7 +80,9 @@
                 <section class="cast-section">
                     <h2 class="section-title">Актеры озвучки</h2>
                     <div class="cast-grid">
-                        <div class="cast-card" th:each="actor, iterStat : ${persons}" th:if="${iterStat.index < 9}">
+                        <div class="cast-card" th:each="actor, iterStat : ${persons}" th:if="${iterStat.index < 9}"
+                             th:onclick="'window.location.href=\'' + @{'/person_details/' + ${actor.id}} + '\''"
+                             style="cursor: pointer;">
                             <div class="cast-image">
                                 <img th:if="${actor.profilePath}" 
                                      th:src="@{'https://image.tmdb.org/t/p/w185' + ${actor.profilePath}}"
@@ -103,20 +105,51 @@
                 <div class="sidebar-section">
                     <h3><i class="fas fa-info-circle"></i> Детали</h3>
                     <ul class="info-list">
-                        <li><span>Статус:</span> Онгоинг</li>
-                        <li><span>Студия:</span> MAPPA</li>
-                        <li><span>Премьера:</span> Июль 2023</li>
-                        <li><span>Эпизоды:</span> 23</li>
-                        <li><span>Длительность:</span> 24 мин</li>
-                        <li><span>Жанры:</span> Экшен, Фэнтези, Сверхъестественное</li>
+                        <li>
+                            <span>Оригинальное название:</span>
+                            <span th:text="${movie.originalTitle}">Название</span>
+                        </li>
+                        <li>
+                            <span>Язык:</span>
+                            <span th:text="${movie.originalLanguage != null ? movie.originalLanguage : 'Нет информации'}">Язык</span>
+                        </li>
+                        <li>
+                            <span>Премьера:</span>
+                            <span th:text="${movie.releaseDate != null ? movie.releaseDate : 'Нет информации'}">Дата</span>
+                        </li>
+                        <li>
+                            <span>Тип:</span>
+                            <span th:text="${movie.mediaType != null ? movie.mediaType : 'Нет информации'}">Тип</span>
+                        </li>
+                        <li>
+                            <span>Возрастной рейтинг:</span>
+                            <span th:text="${movie.adult ? '18+' : 'Для всех возрастов'}">Рейтинг</span>
+                        </li>
                     </ul>
                 </div>
                 <div class="sidebar-section">
                     <h3><i class="fas fa-chart-line"></i> Рейтинги</h3>
                     <div class="rating-item">
-                        <span>MAL Score</span>
+                        <span>Рейтинг TMDB</span>
                         <div class="rating-bar">
-                            <div class="rating-fill" style="width: 92%;">9.2</div>
+                            <div class="rating-fill" 
+                                 th:style="'width: ' + ${movie.voteAverage * 10} + '%'"
+                                 th:attr="data-rating=${#numbers.formatDecimal(movie.voteAverage, 1, 1)}">
+                            </div>
+                        </div>
+                        <div class="rating-details">
+                            <p>
+                                <i class="fas fa-users"></i>
+                                <span th:text="${#numbers.formatDecimal(movie.voteCount, 0, 'COMMA', 0, 'POINT') + ' голосов'}">
+                                    Количество голосов
+                                </span>
+                            </p>
+                            <p>
+                                <i class="fas fa-fire"></i>
+                                <span th:text="${#numbers.formatDecimal(movie.popularity, 0, 'COMMA', 0, 'POINT') + ' популярность'}">
+                                    Популярность
+                                </span>
+                            </p>
                         </div>
                     </div>
                 </div>
