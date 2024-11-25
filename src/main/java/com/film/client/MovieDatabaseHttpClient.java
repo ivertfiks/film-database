@@ -30,10 +30,6 @@ public class MovieDatabaseHttpClient {
     private String baseUrl;
 
     public List<Movie> getTopTrending() {
-        log.info("Sending request to fetch trending movies");
-        log.info("Authorization Token: Bearer {}", accessToken);
-        log.info("Base URL: {}", baseUrl);
-
         try {
             return restClient.get()
                     .uri(uriBuilder -> uriBuilder
@@ -54,11 +50,6 @@ public class MovieDatabaseHttpClient {
     }
 
     public List<Person> getMovieCredits(String id) {
-        log.info("Sending request to fetch movie credits for id: {}", id);
-        log.info("Constructed URL IMPORTANT: {}", restClient.get().uri(uriBuilder -> uriBuilder
-                .path(MovieDbEndpoints.GET_MOVIE_CREDITS_BY_ID)
-                .build(id)));
-
         try {
             return restClient.get()
                     .uri(uriBuilder -> uriBuilder
@@ -100,10 +91,6 @@ public class MovieDatabaseHttpClient {
 
 
     public MovieDetails getMovieDetails(String id) {
-        log.info("Sending request to fetch movie details for id: {}", id);
-        log.info("Authorization Token: Bearer {}", accessToken);
-        log.info("Base URL: {}", baseUrl);
-
         try {
             return restClient.get()
                     .uri(uriBuilder -> uriBuilder
