@@ -16,6 +16,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.client.WebClient;
 import org.springframework.web.reactive.function.client.WebClientResponseException;
 
+import static com.film.client.endpoints.MovieDbEndpoints.GET_MOVIES_BY_WORD;
+
 @Service
 @RequiredArgsConstructor
 @Slf4j
@@ -44,6 +46,28 @@ public class MovieDatabaseHttpClient {
                     .block();
         } catch (WebClientResponseException ex) {
             log.error("Failed to fetch trending movies. Status code: {}", ex.getStatusCode());
+            log.error("Error message: {}", ex.getResponseBodyAsString());
+            throw new RuntimeException("Failed to fetch movie data", ex);
+        }
+    }
+
+    public List<Movie> getFilmsByWord(String keyword, int page) {
+        try {
+            return restClient.get()
+                    .uri(uriBuilder -> uriBuilder
+                            .path(GET_MOVIES_BY_WORD)
+                            .queryParam("query", keyword)
+                            .queryParam("page", page)
+                            .queryParam("language", "en-US")
+                            .build())
+                    .header("Authorization", "Bearer " + accessToken)
+                    .header("accept", "application/json")
+                    .retrieve()
+                    .bodyToMono(MovieResponse.class)
+                    .map(MovieResponse::getMovies)
+                    .block();
+        } catch (WebClientResponseException ex) {
+            log.error("Failed to fetch searched movies. Status code: {}", ex.getStatusCode());
             log.error("Error message: {}", ex.getResponseBodyAsString());
             throw new RuntimeException("Failed to fetch movie data", ex);
         }

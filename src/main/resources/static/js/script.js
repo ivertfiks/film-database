@@ -83,43 +83,49 @@ let searchOpen = false;
 
 searchBtn.addEventListener('click', () => {
     if (!searchOpen) {
-        // Create search overlay
-        const searchOverlay = document.createElement('div');
-        searchOverlay.className = 'search-overlay';
-        searchOverlay.innerHTML = `
-            <div class="search-container">
-                <input type="text" placeholder="Search anime..." class="search-input">
-                <button class="close-search"><i class="fas fa-times"></i></button>
-            </div>
-        `;
+        const overlay = document.createElement('div');
+        overlay.className = 'search-overlay';
         
-        document.body.appendChild(searchOverlay);
+        const searchBox = document.createElement('div');
+        searchBox.className = 'search-box';
+        
+        const searchInput = document.createElement('input');
+        searchInput.type = 'text';
+        searchInput.placeholder = 'Поиск фильма...';
+        searchInput.className = 'search-input';
+        
+        searchBox.appendChild(searchInput);
+        overlay.appendChild(searchBox);
+        document.body.appendChild(overlay);
         document.body.style.overflow = 'hidden';
         
-        // Focus input
         setTimeout(() => {
-            searchOverlay.querySelector('input').focus();
-        }, 100);
-        
-        // Close search on click outside
-        searchOverlay.addEventListener('click', (e) => {
-            if (e.target === searchOverlay) {
-                closeSearch(searchOverlay);
+            overlay.style.opacity = '1';
+            searchInput.focus();
+        }, 10);
+
+        // Handle search on Enter
+        searchInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter' && searchInput.value.trim() !== '') {
+                const searchTerm = searchInput.value.trim();
+                window.location.href = `/movie-list/${searchTerm}/1`;
             }
         });
-        
-        // Close search on close button click
-        searchOverlay.querySelector('.close-search').addEventListener('click', () => {
-            closeSearch(searchOverlay);
+
+        // Close on overlay click
+        overlay.addEventListener('click', (e) => {
+            if (e.target === overlay) {
+                closeSearch(overlay);
+            }
         });
-        
-        // Close search on ESC key
+
+        // Close on Escape
         document.addEventListener('keydown', (e) => {
             if (e.key === 'Escape') {
-                closeSearch(searchOverlay);
+                closeSearch(overlay);
             }
         });
-        
+
         searchOpen = true;
     }
 });
@@ -146,55 +152,37 @@ style.textContent = `
         display: flex;
         align-items: center;
         justify-content: center;
-        z-index: 1001;
-        opacity: 1;
+        z-index: 1000;
+        opacity: 0;
         transition: opacity 0.3s ease;
     }
     
-    .search-container {
-        width: 80%;
+    .search-box {
+        width: 90%;
         max-width: 600px;
-        position: relative;
+        padding: 20px;
     }
     
     .search-input {
         width: 100%;
-        padding: 20px;
-        background: rgba(255, 255, 255, 0.1);
+        padding: 15px 20px;
+        font-size: 1.5rem;
+        color: #fff;
+        background: transparent;
         border: none;
-        border-radius: 5px;
-        color: white;
-        font-size: 1.2rem;
+        border-bottom: 2px solid rgba(255, 255, 255, 0.2);
         outline: none;
         transition: all 0.3s ease;
     }
     
     .search-input:focus {
-        background: rgba(255, 255, 255, 0.15);
+        border-bottom-color: var(--primary-color);
     }
     
     .search-input::placeholder {
         color: rgba(255, 255, 255, 0.5);
     }
-    
-    .close-search {
-        position: absolute;
-        right: -40px;
-        top: 50%;
-        transform: translateY(-50%);
-        background: none;
-        border: none;
-        color: white;
-        font-size: 1.5rem;
-        cursor: pointer;
-        transition: all 0.3s ease;
-    }
-    
-    .close-search:hover {
-        transform: translateY(-50%) rotate(90deg);
-    }
 `;
-
 document.head.appendChild(style);
 
 // Login button effect

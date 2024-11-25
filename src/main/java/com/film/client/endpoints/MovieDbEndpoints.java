@@ -10,4 +10,6 @@ public class MovieDbEndpoints {
     public static final String GET_MOVIE_CREDITS_BY_ID = "/movie/{id}/credits";
 
     public static final String GET_CREDIT_BY_ID = "/person/{id}";
+
+    public static final String GET_MOVIES_BY_WORD = "/search/movie";
 }

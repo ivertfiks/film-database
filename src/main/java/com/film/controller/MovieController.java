@@ -10,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 
@@ -27,9 +28,16 @@ public class MovieController {
         return "index";
     }
 
-    @GetMapping(value = {"/movie-list", "/movie-list/{page}"})
-    public String getAllMovies(Model model) {
-        List<Movie> movies = movieClient.getTopTrending();
+    @GetMapping(value = {"/movie-list", "/movie-list/{search}/{page}"})
+    public String getAllMovies(Model model,
+                               @PathVariable(value = "search", required = false) String search,
+                               @PathVariable(value = "page", required = false) Integer page) {
+        List<Movie> movies;
+        if (search != null && page != null) {
+            movies = movieClient.getFilmsByWord(search, page);
+        } else {
+            movies = movieClient.getTopTrending();
+        }
         model.addAttribute("movies", movies);
         return "anime_list";
     }
