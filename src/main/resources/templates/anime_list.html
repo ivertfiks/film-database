@@ -101,7 +101,7 @@
                 <div th:each="movie : ${movies}" class="anime-card">
                     <div class="card-image">
                         <img th:if="${movie.posterPath}"
-                             th:src="@{'https://image.tmdb.org/t/p/w500' + ${movie.posterPath}}" 
+                             th:src="@{'https://image.tmdb.org/t/p/w500' + ${movie.posterPath}}"
                              th:alt="${movie.title}">
                         <img th:unless="${movie.posterPath}"
                              th:src="@{/images/default-poster.svg}"
@@ -115,7 +115,7 @@
                     <div class="card-info">
                         <div class="card-tags">
                             <span th:if="${movie.voteAverage >= 8}">Топ</span>
-                            <span th:text="${#strings.substring(movie.releaseDate, 0, 4)}">2023</span>
+                            <span th:text="${movie.releaseYear}">2023</span>
                         </div>
                         <h3 th:text="${movie.title}">Название фильма</h3>
                         <p class="rating">
