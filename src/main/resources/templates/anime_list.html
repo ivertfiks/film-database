@@ -100,7 +100,11 @@
                 <!-- Карточки фильмов -->
                 <div th:each="movie : ${movies}" class="anime-card">
                     <div class="card-image">
-                        <img th:src="${'https://image.tmdb.org/t/p/w500' + movie.posterPath}" 
+                        <img th:if="${movie.posterPath}"
+                             th:src="@{'https://image.tmdb.org/t/p/w500' + ${movie.posterPath}}" 
+                             th:alt="${movie.title}">
+                        <img th:unless="${movie.posterPath}"
+                             th:src="@{/images/default-poster.svg}"
                              th:alt="${movie.title}">
                         <div class="card-overlay">
                             <a th:href="@{'/movie_details/' + ${movie.id}}" class="play-btn" style="left: 50%; transform: translateX(-50%);">

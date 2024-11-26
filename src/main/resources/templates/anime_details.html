@@ -33,12 +33,22 @@
     <!-- Главный баннер аниме -->
     <div class="anime-banner">
         <div class="banner-image">
-            <img th:if="${movie.backdropPath}" th:src="@{'https://image.tmdb.org/t/p/original' + ${movie.backdropPath}}" alt="Anime Banner">
+            <img th:if="${movie.backdropPath}" 
+                 th:src="@{'https://image.tmdb.org/t/p/original' + ${movie.backdropPath}}" 
+                 alt="Anime Banner">
+            <img th:unless="${movie.backdropPath}"
+                 th:src="@{/images/default-backdrop.svg}"
+                 alt="Default Banner">
         </div>
         <div class="banner-overlay"></div>
         <div class="banner-content">
             <div class="anime-poster">
-                <img th:if="${movie.posterPath}" th:src="@{'https://image.tmdb.org/t/p/w500' + ${movie.posterPath}}" th:alt="${movie.title}">
+                <img th:if="${movie.posterPath}" 
+                     th:src="@{'https://image.tmdb.org/t/p/w500' + ${movie.posterPath}}" 
+                     th:alt="${movie.title}">
+                <img th:unless="${movie.posterPath}"
+                     th:src="@{/images/default-poster.svg}"
+                     th:alt="${movie.title}">
                 <button class="watch-now-btn">
                     <i class="fas fa-play"></i> Смотреть
                 </button>
@@ -88,7 +98,7 @@
                                      th:src="@{'https://image.tmdb.org/t/p/w185' + ${actor.profilePath}}"
                                      th:alt="${actor.name}">
                                 <img th:unless="${actor.profilePath}"
-                                     src="/images/default-profile.jpg"
+                                     th:src="@{/images/default-profile.svg}"
                                      th:alt="${actor.name}">
                             </div>
                             <div class="cast-info">
