@@ -57,7 +57,7 @@ public class MovieDatabaseHttpClient {
                     .uri(uriBuilder -> uriBuilder
                             .path(GET_MOVIES_BY_WORD)
                             .queryParam("query", keyword)
-                            .queryParam("page", page)
+                            //.queryParam("page", page)
                             .queryParam("language", "en-US")
                             .build())
                     .header("Authorization", "Bearer " + accessToken)

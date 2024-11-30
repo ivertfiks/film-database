@@ -1,11 +1,17 @@
 package com.film.entity;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonSetter;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 @Data
 @NoArgsConstructor
+@Slf4j
 public class MovieDetails {
 
     @JsonProperty("id")
@@ -50,4 +56,21 @@ public class MovieDetails {
     @JsonProperty("media_type")
     private String mediaType;
 
+    private String releaseYear;
+
+    @JsonSetter("release_date")
+    public void setReleaseDate(String releaseDate) {
+        this.releaseDate = releaseDate;
+        if (releaseDate == null || releaseDate.isEmpty()) {
+            this.releaseYear = "N/A";
+            return;
+        }
+        try {
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+            LocalDate date = LocalDate.parse(releaseDate, formatter);
+            this.releaseYear = String.valueOf(date.getYear());
+        } catch (Exception e) {
+            log.warn("Invalid date format: {}", releaseDate);
+        }
+    }
 }

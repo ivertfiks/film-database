@@ -55,7 +55,7 @@
             </div>
             <div class="anime-info">
                 <div class="anime-meta">
-                    <span class="anime-year" th:text="${#strings.substring(movie.releaseDate, 0, 4)}">2023</span>
+                    <span class="anime-year" th:text="${movie.releaseYear}">2023</span>
                     <span class="anime-rating" th:text="${movie.adult ? 'R' : 'PG-13'}">PG-13</span>
                     <span class="anime-duration" th:text="${movie.mediaType}">24 мин/эп</span>
                 </div>
@@ -125,7 +125,7 @@
                         </li>
                         <li>
                             <span>Премьера:</span>
-                            <span th:text="${movie.releaseDate != null ? movie.releaseDate : 'Нет информации'}">Дата</span>
+                            <span th:text="${movie.releaseYear != null ? movie.releaseYear : 'Нет информации'}">Дата</span>
                         </li>
                         <li>
                             <span>Тип:</span>
