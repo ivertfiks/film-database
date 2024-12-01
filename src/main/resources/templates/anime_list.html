@@ -128,21 +128,24 @@
 
             <!-- Пагинация -->
             <div class="pagination" th:if="${totalPages > 1}">
-                <button class="prev-page" th:disabled="${currentPage == 1}">
+                <a th:href="@{${search != null ? '/movie-list/' + search + '/' + (currentPage - 1) : '/movie-list/' + (currentPage - 1)}}"
+                   class="prev-page" th:classappend="${currentPage == 1 ? 'disabled' : ''}">
                     <i class="fas fa-chevron-left"></i>
-                </button>
+                </a>
                 <div class="page-numbers">
-                    <span th:each="pageNum : ${#numbers.sequence(1, totalPages)}"
-                          th:if="${pageNum == 1 || pageNum == totalPages || (pageNum >= currentPage - 1 && pageNum <= currentPage + 1)}"
-                          th:text="${pageNum}"
-                          th:class="${pageNum == currentPage ? 'active' : ''}">
-                    </span>
-                    <span th:if="${currentPage > 3}">...</span>
-                    <span th:if="${currentPage < totalPages - 2}">...</span>
+                    <a th:each="pageNum : ${#numbers.sequence(1, totalPages)}"
+                       th:if="${pageNum == 1 || pageNum == totalPages || (pageNum >= currentPage - 1 && pageNum <= currentPage + 1)}"
+                       th:href="@{${search != null ? '/movie-list/' + search + '/' + pageNum : '/movie-list/' + pageNum}}"
+                       th:text="${pageNum}"
+                       th:class="${pageNum == currentPage ? 'active' : ''}">
+                    </a>
+                    <span th:if="${currentPage > 3}" class="dots">...</span>
+                    <span th:if="${currentPage < totalPages - 2}" class="dots">...</span>
                 </div>
-                <button class="next-page" th:disabled="${currentPage == totalPages}">
+                <a th:href="@{${search != null ? '/movie-list/' + search + '/' + (currentPage + 1) : '/movie-list/' + (currentPage + 1)}}"
+                   class="next-page" th:classappend="${currentPage == totalPages ? 'disabled' : ''}">
                     <i class="fas fa-chevron-right"></i>
-                </button>
+                </a>
             </div>
         </section>
     </main>

@@ -78,4 +78,10 @@ public class Movie {
         }
     }
 
+    @JsonProperty("total_pages")
+    private static int totalPages;
+
+    @JsonProperty("total_results")
+    private static int totalResults;
+
 }

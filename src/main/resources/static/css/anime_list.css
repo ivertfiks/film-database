@@ -351,9 +351,10 @@
 .page-numbers {
     display: flex;
     gap: 0.5rem;
+    align-items: center;
 }
 
-.page-numbers span {
+.page-numbers a {
     width: 35px;
     height: 35px;
     display: flex;
@@ -363,11 +364,23 @@
     border-radius: 5px;
     cursor: pointer;
     transition: all 0.3s ease;
+    text-decoration: none;
+    color: var(--text-primary);
 }
 
-.page-numbers span.active {
+.page-numbers a:hover {
     background: var(--primary-color);
     color: white;
+}
+
+.page-numbers a.active {
+    background: var(--primary-color);
+    color: white;
+}
+
+.page-numbers .dots {
+    color: var(--text-secondary);
+    padding: 0 0.2rem;
 }
 
 .prev-page,
@@ -380,11 +393,23 @@
     color: var(--text-primary);
     cursor: pointer;
     transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
 }
 
-.prev-page:hover,
-.next-page:hover {
+.prev-page:hover:not(.disabled),
+.next-page:hover:not(.disabled) {
     background: var(--primary-color);
+    color: white;
+}
+
+.prev-page.disabled,
+.next-page.disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    pointer-events: none;
 }
 
 /* Адаптивность */

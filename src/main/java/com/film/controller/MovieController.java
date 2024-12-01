@@ -4,6 +4,7 @@ import com.film.client.MovieDatabaseHttpClient;
 import com.film.entity.Movie;
 import com.film.entity.MovieDetails;
 import com.film.entity.Person;
+import com.film.entity.responses.MovieResponse;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
@@ -21,27 +22,33 @@ public class MovieController {
     private final MovieDatabaseHttpClient movieClient;
 
     @GetMapping(value = {"/movies", "/"})
-    public String getTopTrendingMovies(Model model) {
-        List<Movie> movies = movieClient.getTopTrending();
-        model.addAttribute("movies", movies);
+    public String getTopTrendingMovies(Model model, @PathVariable(value = "page", required = false) Integer page) {
+        if(page == null) page = 1;
+        MovieResponse movies = movieClient.getTopTrending(page);
+        model.addAttribute("movies", movies.getMovies());
+        model.addAttribute("currentPage", page);
+        model.addAttribute("totalPages", movies.getTotalPages());
+        model.addAttribute("totalResults", movies.getTotalResults());
         return "index";
     }
 
-    @GetMapping(value = {"/movie-list", "/movie-list/{search}/{page}"})
+    @GetMapping(value = {"/movie-list", "/movie-list/{search}/{page}", "/movie-list/{page}"})
     public String getAllMovies(Model model,
                                @PathVariable(value = "search", required = false) String search,
                                @PathVariable(value = "page", required = false) Integer page) {
-        List<Movie> movies;
+        MovieResponse movieResponse;
         if(page == null) page = 1;
         if (search != null) {
-            movies = movieClient.getFilmsByWord(search, page);
+            movieResponse = movieClient.getFilmsByWord(search, page);
         } else {
-            movies = movieClient.getTopTrending();
+            movieResponse = movieClient.getTopTrending(page);
         }
-        log.info("Movies size: " + movies.size());
-        model.addAttribute("movies", movies);
+        log.info("Movies size: " + movieResponse.getTotalResults());
+        model.addAttribute("movies", movieResponse.getMovies());
         model.addAttribute("search", search);
         model.addAttribute("currentPage", page);
+        model.addAttribute("totalPages", movieResponse.getTotalPages());
+        model.addAttribute("totalResults", movieResponse.getTotalResults());
         return "anime_list";
     }
 

@@ -31,18 +31,18 @@ public class MovieDatabaseHttpClient {
     @Value("${moviedb.base-url}")
     private String baseUrl;
 
-    public List<Movie> getTopTrending() {
+    public MovieResponse getTopTrending(int page) {
         try {
             return restClient.get()
                     .uri(uriBuilder -> uriBuilder
                             .path(MovieDbEndpoints.GET_TOP_TRENDING_MOVIES)
+                            .queryParam("page", page)
                             .queryParam("language", "en-US")
                             .build())
                     .header("Authorization", "Bearer " + accessToken)
                     .header("accept", "application/json")
                     .retrieve()
                     .bodyToMono(MovieResponse.class)
-                    .map(MovieResponse::getMovies)
                     .block();
         } catch (WebClientResponseException ex) {
             log.error("Failed to fetch trending movies. Status code: {}", ex.getStatusCode());
@@ -51,20 +51,19 @@ public class MovieDatabaseHttpClient {
         }
     }
 
-    public List<Movie> getFilmsByWord(String keyword, int page) {
+    public MovieResponse getFilmsByWord(String keyword, int page) {
         try {
             return restClient.get()
                     .uri(uriBuilder -> uriBuilder
                             .path(GET_MOVIES_BY_WORD)
                             .queryParam("query", keyword)
-                            //.queryParam("page", page)
+                            .queryParam("page", page)
                             .queryParam("language", "en-US")
                             .build())
                     .header("Authorization", "Bearer " + accessToken)
                     .header("accept", "application/json")
                     .retrieve()
                     .bodyToMono(MovieResponse.class)
-                    .map(MovieResponse::getMovies)
                     .block();
         } catch (WebClientResponseException ex) {
             log.error("Failed to fetch searched movies. Status code: {}", ex.getStatusCode());
