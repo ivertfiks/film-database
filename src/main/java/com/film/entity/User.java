@@ -1,24 +1,31 @@
 package com.film.entity;
 
 import com.film.entity.enums.Roles;
-import com.film.entity.enums.UsersFilmStatus;
+import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.util.List;
-import java.util.Map;
 
 @Data
 @NoArgsConstructor
+@Entity
 public class User {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private int id;
+
     private String username;
     private String password;
     private String email;
     private Roles role;
 
+    @ElementCollection
     private List<User> subscribers;
+    @ElementCollection
     private List<User> subscriptions;
 
-    private Map<Movie, UsersFilmStatus> savedMovies;
-
+    @OneToMany(mappedBy = "user")
+    private List<UserFilmStatus> filmStatus;
 }

@@ -3,6 +3,9 @@ package com.film.entity;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import com.fasterxml.jackson.annotation.JsonSetter;
@@ -11,8 +14,10 @@ import lombok.extern.slf4j.Slf4j;
 @Data
 @NoArgsConstructor
 @Slf4j
+@Entity
 public class Movie {
 
+    @Id
     @JsonProperty("id")
     private int id;
 
