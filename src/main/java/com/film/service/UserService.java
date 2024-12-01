@@ -1,7 +1,14 @@
 package com.film.service;
 
-import org.springframework.stereotype.Service;
+import java.util.List;
 
-@Service
-public class UserService {
+import com.film.entity.Users;
+
+public interface UserService {
+
+    Users createUser(String username, String email, String password);
+    Users getUser(int id);
+    Users getUser(String username);
+    List<Users> getAllUsers();
+
 }

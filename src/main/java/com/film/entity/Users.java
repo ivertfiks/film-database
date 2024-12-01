@@ -10,7 +10,13 @@ import java.util.List;
 @Data
 @NoArgsConstructor
 @Entity
-public class User {
+public class Users {
+
+    public Users(String username, String email, String password) {
+        this.username = username;
+        this.password = password;
+        this.email = email;
+    }
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -22,10 +28,10 @@ public class User {
     private Roles role;
 
     @ElementCollection
-    private List<User> subscribers;
+    private List<Users> subscribers;
     @ElementCollection
-    private List<User> subscriptions;
+    private List<Users> subscriptions;
 
-    @OneToMany(mappedBy = "user")
+    @OneToMany(mappedBy = "users")
     private List<UserFilmStatus> filmStatus;
 }

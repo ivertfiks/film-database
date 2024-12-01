@@ -14,8 +14,8 @@ public class UserFilmStatus {
     private int id;
 
     @ManyToOne
-    @JoinColumn(name = "user_id")
-    private User user;
+    @JoinColumn(name = "users_id")
+    private Users users;
 
     @ManyToOne
     @JoinColumn(name = "movie_id")
