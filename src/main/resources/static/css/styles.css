@@ -1316,3 +1316,58 @@ body {
     border: 1px solid rgba(87, 255, 87, 0.3);
     color: #57ff57;
 }
+
+/* Стили для переключателя форм */
+.auth-tabs {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 30px;
+    gap: 15px;
+    padding: 5px;
+    background: rgba(108, 99, 255, 0.1);
+    border-radius: 8px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(108, 99, 255, 0.2);
+}
+
+.tab-btn {
+    padding: 12px 30px;
+    border: 2px solid transparent;
+    background: transparent;
+    color: var(--text-secondary);
+    font-weight: 500;
+    font-size: 0.95rem;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.tab-btn:hover {
+    color: var(--text-primary);
+    border-color: var(--primary-color);
+    background: rgba(108, 99, 255, 0.1);
+}
+
+.tab-btn.active {
+    background: var(--primary-color);
+    color: var(--text-primary);
+    border-color: var(--primary-color);
+    box-shadow: 0 0 20px rgba(108, 99, 255, 0.3);
+}
+
+/* Анимация для форм */
+.form {
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.form:not(:visible) {
+    opacity: 0;
+    transform: translateY(10px);
+}
+
+.form:visible {
+    opacity: 1;
+    transform: translateY(0);
+}

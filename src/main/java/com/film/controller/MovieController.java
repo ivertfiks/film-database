@@ -20,6 +20,7 @@ import java.util.List;
 public class MovieController {
 
     private final MovieDatabaseHttpClient movieClient;
+    private final UserController userController;
 
     @GetMapping(value = {"/movies", "/"})
     public String getTopTrendingMovies(Model model, @PathVariable(value = "page", required = false) Integer page) {
@@ -29,6 +30,7 @@ public class MovieController {
         model.addAttribute("currentPage", page);
         model.addAttribute("totalPages", movies.getTotalPages());
         model.addAttribute("totalResults", movies.getTotalResults());
+        log.info("Users id 1 info: " + userController.getUser(1));
         return "index";
     }
 
